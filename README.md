@@ -13,3 +13,7 @@ git clone https://github.com/CRAM-Team/lynxmotion-description.git
 You can then run the visualization by issuing the command `roslaunch lynxmotion_description al5d.launch` from your terminal. This will
 open an RViz window with the robot. Beside the Rviz window, a small window identifable by a question mark in the launch bar will also appear.
 There you will see the different joints of the robot and play around to move the robot to different places.
+
+### Note
+A camera has been added to the model and is supposed to be at the center of the
+blue board in the visualization. But no resource is available to verify the proper working of the camera in Rviz. Any suggestion on this is very welcome.

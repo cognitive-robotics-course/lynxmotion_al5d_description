@@ -187,7 +187,51 @@
         <xacro:inertial_matrix_box width="${finger_width}" height="${finger_height}" depth="${finger_depth}" mass="${finger_mass}" />
     </link>
 
+<xacro:property name="camera_support_depth" value="0.25" />
+    <xacro:property name="camera_support_size" value="0.003" />
+    <xacro:property name="camera_support_big_size" value="0.5" />
+    <xacro:property name="camera_support_to_base" value="0.06" />
+
+    <link name="camera_link">
+        <visual name="stick">
+            <geometry>
+                <box size="${camera_support_size} ${camera_support_size} ${camera_support_depth}" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 ${camera_support_to_base} ${camera_support_depth/2}" />
+            <material name="BlueGrey" />
+        </visual>
+        <visual name="support">
+            <geometry>
+                <box size="${camera_support_big_size} ${camera_support_big_size + camera_support_to_base} ${camera_support_size}" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 ${-camera_support_big_size/2} ${camera_support_depth - camera_support_size/2}" />
+            <material name="BlueGrey" />
+        </visual>
+        <collision name="support">
+            <geometry>
+                <box size="${camera_support_big_size} ${camera_support_big_size + camera_support_to_base} ${camera_support_size}" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 ${-camera_support_big_size/2} ${camera_support_depth - camera_support_size/2}" />
+            <material name="BlueGrey" />
+        </collision>
+        <xacro:inertial_matrix_box mass="${camera_support_mass}" width="${camera_support_big_size}" height="${camera_support_big_size + camera_support_to_base}" depth="${camera_support_size}" />
+    </link>
+
+    <!-- Adding a camera sensor to the model -->
+    <sensor name="robot_camera" update_rate="1">
+        <parent link="camera_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <camera>
+            <image width="640" height="480" hfov="${PI/2}" format="RGB8" near="${camera_support_depth}" far="${camera_support_depth}" />
+        </camera>
+    </sensor>
+
     <!-- Adding joints -->
+
+    <joint name="camera_support_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="camera_link" />
+    </joint>
 
     <joint name="shoulder_elbow_roll" type="revolute">
         <parent link="base_link" />
