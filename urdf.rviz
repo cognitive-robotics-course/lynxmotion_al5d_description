@@ -60,7 +60,7 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        All Links Enabled: true
+        All Links Enabled: false
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -74,7 +74,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
         elbow:
           Alpha: 1
           Show Axes: false
@@ -84,17 +84,17 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
         left_finger:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
         right_finger:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
         shoulder:
           Alpha: 1
           Show Axes: false
@@ -109,7 +109,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+          Value: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -156,7 +156,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.6656394
+      Distance: 1.64491987
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -171,10 +171,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: -0.030202087
+      Pitch: 0.479797214
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 6.23857975
+      Yaw: 0.0853839666
     Saved: ~
 Window Geometry:
   Camera:
