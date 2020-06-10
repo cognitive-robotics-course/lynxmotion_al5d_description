@@ -8,7 +8,7 @@ in your ROS workspace by running the following commands:
 ``` bash
 roscd
 cd ../src
-git clone https://github.com/CRAM-Team/lynxmotion-description.git 
+git clone https://github.com/CRAM-Team/lynxmotion_al5d_description.git 
 ```
 You can then run the visualization by issuing the command `roslaunch lynxmotion_description al5d.launch` from your terminal. This will
 open an RViz window with the robot. Beside the Rviz window, a small window identifable by a question mark in the launch bar will also appear.
