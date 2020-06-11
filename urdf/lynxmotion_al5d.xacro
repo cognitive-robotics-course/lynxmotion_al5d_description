@@ -7,12 +7,21 @@
     <!-- Base link comprising the board behind the robot and the cylinder at its bottom -->
     
     <link name="base_link">
-        <visual>
+        <visual name="board">
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/base_link.dae" />
+                <box size="${board_size} ${board_size} ${board_height}" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 0 0" />
+            <origin rpy="0 0 0" xyz="0 ${base_radius + board_size/2} 0" />
+            <material name="Green" />
         </visual>
+        <visual name="base">
+            <geometry>
+                <cylinder length="${base_height}" radius="${base_radius}" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 ${base_height/2}" />
+            <material name="Black" />
+        </visual>
+        
         <collision>
             <geometry>
                 <cylinder length="${base_height}" radius="${base_radius}" />
@@ -27,9 +36,10 @@
     <link name="top_box">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
+                <box size="${top_box_width} ${top_box_height} ${top_box_depth}" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0.01 ${-top_box_height + base_radius} 0" />
+            <origin rpy="0 0 0" xyz="0 ${-top_box_height + base_radius} ${top_box_depth/2}" />
+            <material name="Black" />
         </visual>
         <collision>
             <geometry>
@@ -45,8 +55,10 @@
     <link name="shoulder">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/shoulder.dae" />
+                <box size="${shoulder_width} ${shoulder_height} ${shoulder_to_elbow}" />
             </geometry>
+            <origin rpy="0 0 0" xyz="0 0 ${shoulder_to_elbow/2}" />
+            <material name="Silver" />
         </visual>
         <collision>
             <geometry>
@@ -60,13 +72,7 @@
     <!-- Link representing the elbow of the robot which ends at the beginning of the wrist -->
 
     <link name="elbow">
-        <visual>
-            <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
-            </geometry>
-            <origin xyz="0 -0.2 0" rpy="0 0 0" />
-        </visual>
-        <!--<visual name="before_arm">
+        <visual name="before_arm">
             <geometry>
                 <cylinder length="${tube_length}" radius="${tube_radius}" />
             </geometry>
@@ -86,7 +92,7 @@
             </geometry>
             <material name="Black" />
             <origin rpy="${PI/2} 0 0" xyz="0 ${-tube_length} 0" />
-        </visual> -->
+        </visual>
 
         <collision>
             <geometry>
@@ -102,11 +108,6 @@
     <link name="wrist">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/wrist.dae" />
-            </geometry>
-        </visual>
-        <!-- <visual>
-            <geometry>
                 <box size="${hs_225_width} ${hs_225_height} ${hs_225_depth}" />
             </geometry>
             <origin rpy="${PI/2} 0 0" xyz="0 0 0" />
@@ -118,7 +119,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 0" xyz="0 ${-(hs_225_depth/2 + wrist_cylinder_length/2)} 0" />
             <material name="Silver" />
-        </visual> -->
+        </visual>
         <collision>
             <geometry>
                 <box size="${hs_225_width} ${hs_225_height} ${hs_225_depth}" />
@@ -133,16 +134,11 @@
     <link name="gripper_base">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/gripper_base.dae" />
-            </geometry>
-        </visual>
-        <!-- <visual>
-            <geometry>
                 <box size="${gripper_base_width} ${gripper_base_height} ${gripper_base_depth}" />
             </geometry>
             <material name="Black" />
             <origin rpy="${PI/2} 0 0" xyz="0 0 0" />
-        </visual>-->
+        </visual>
         <collision>
             <geometry>
                 <box size="${gripper_base_width} ${gripper_base_height} ${gripper_base_depth}" />
@@ -156,18 +152,13 @@
     <link name="left_finger">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
-            </geometry>
-        </visual>
-        <!-- <visual>
-            <geometry>
                 <box size="${finger_width} ${finger_height} ${finger_depth}" />
             </geometry>
             <origin rpy="${PI/2} 0 0" xyz="${gripper_base_width/2} ${-(wrist_cylinder_length + gripper_base_depth)} 0" />
             <material name="silver">
                 <color rgba="0.8 0.8 0.8 1" />
             </material>
-        </visual>--> 
+        </visual> 
         <collision>
             <geometry>
                 <box size="${finger_width} ${finger_height} ${finger_depth}" />
@@ -180,18 +171,13 @@
     <link name="right_finger">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
-            </geometry>
-        </visual>
-        <!--<visual>
-            <geometry>
                 <box size="${finger_width} ${finger_height} ${finger_depth}" />
             </geometry>
             <origin rpy="${PI/2} 0 0" xyz="${-gripper_base_width/2} ${-(wrist_cylinder_length + gripper_base_depth)} 0" />
             <material name="silver">
                 <color rgba="0.8 0.8 0.8 1" />
             </material>
-        </visual> -->
+        </visual> 
         <collision>
             <geometry>
                 <box size="${finger_width} ${finger_height} ${finger_depth}" />
@@ -250,7 +236,7 @@
     <joint name="shoulder_elbow_roll" type="revolute">
         <parent link="base_link" />
         <child link="top_box" />
-        <origin xyz="0 0 0" />
+        <origin xyz="0 0 ${base_height}" />
         <axis xyz="1 0 0" />
         <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="50" friction="1" />
@@ -268,6 +254,7 @@
     <joint name="elbow_roll" type="revolute">
         <parent link="shoulder" />
         <child link="elbow" />
+        <origin xyz="0 0 ${base_height + shoulder_to_elbow - hs_755eb_height}" />
         <axis xyz="1 0 0" />
         <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="50" friction="1" />
