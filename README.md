@@ -10,7 +10,7 @@ roscd
 cd ../src
 git clone https://github.com/CRAM-Team/lynxmotion_al5d_description.git 
 ```
-You can then run the visualization by issuing the command `roslaunch lynxmotion_description al5d.launch` from your terminal. This will
+You can then run the visualization by issuing the command `roslaunch lynxmotion_al5d_description al5d.launch` from your terminal. This will
 open an RViz window with the robot. Beside the Rviz window, a small window identifable by a question mark in the launch bar will also appear.
 There you will see the different joints of the robot and play around to move the robot to different places.
 
