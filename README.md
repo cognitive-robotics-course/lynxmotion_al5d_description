@@ -3,8 +3,11 @@ This package exposes the Lynxmotion AL5D arm robot in a simulation world. It mak
 , axis of rotations and acceptable range of rotation to simulate the robot.
 
 # Usage
-The visualization tool used for this simulation at the moment is *Rviz*. For running the visualization, you will first need to clone the project
-in your ROS workspace by running the following commands:
+The visualization tool used for this simulation at the moment is *Rviz*. For running the visualization, first make sure that the joint\_state\_publisher package is installed. Install them by running:
+``` bash 
+sudo apt install ros-kinetic-joint-state-publisher ros-kinetic-joint-state-publisher-gui
+```
+You can then proceed to cloning the repository as follows:
 ``` bash
 roscd
 cd ../src
