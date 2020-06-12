@@ -88,7 +88,7 @@
             </geometry>
             <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.1" depth="0.3" height="0.7" width="0.5" />
+        <xacro:inertial_matrix_box mass="2" depth="0.3" height="0.7" width="0.5" />
     </link>
     <gazebo reference="arm" />
 
@@ -105,7 +105,7 @@
             </geometry>
             <origin rpy="0 0 0" xyz="0 0.165 -0.065" />
         </collision>
-        <xacro:inertial_matrix_cylinder mass="0.5" height="0.1" radius="0.1" />
+        <xacro:inertial_matrix_box mass="0.25" depth="0.25" height="0.35" width="0.5" />
     </link>
     <gazebo reference="wrist" />
 
@@ -122,7 +122,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="1" depth="1.2" height="2" width="6" />
+        <xacro:inertial_matrix_box mass="1" depth="0.12" height="0.2" width="0.6" />
     </link>
     <gazebo reference="gripper" />
 
@@ -139,7 +139,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.5" depth="1.2" height="15" width="0.8" />
+        <xacro:inertial_matrix_box mass="0.05" depth="0.12" height="1.5" width="0.08" />
     </link>
     <gazebo reference="left_finger" />
             
@@ -156,7 +156,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.5" depth="1.2" height="15" width="0.8" />
+        <xacro:inertial_matrix_box mass="0.05" depth="0.12" height="1.5" width="0.08" />
     </link>
     <gazebo reference="right_finger" />
 
@@ -287,5 +287,39 @@
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
         <robotNamespace>/lynxmotion_al5d</robotNamespace>
         </plugin>
+    </gazebo>
+
+    <gazebo reference="camera_link">
+        <sensor name="external_camera" type="camera">
+            <update_rate>1.0</update_rate>
+            <camera name="camera_top">
+                <horizontal_fov>1.0</horizontal_fov>
+                <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.3</near>
+                    <far>100</far>
+                </clip>
+            </camera>
+
+            <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+                <robotNamespace>/lynxmotion_al5d</robotNamespace>
+                <alwaysOn>true</alwaysOn>
+                <updateRate>1.0</updateRate>
+                <cameraName>al5d_external_vision</cameraName>
+                <imageTopicName>image_raw</imageTopicName>
+                <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+                <frameName>camera_link</frameName>
+                <hackBaseline>0.07</hackBaseline>
+                <distortionK1>-0.0545211</distortionK1>
+                <distortionK2>0.06919734</distortionK2>
+                <distortionK3>-0.0241095</distortionK3>
+                <distortionT1>-0.0112245</distortionT1>
+                <distortionT2>0.0</distortionT2>
+            </plugin>
+        </sensor>
     </gazebo>
 </robot>
