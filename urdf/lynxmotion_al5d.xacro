@@ -20,7 +20,7 @@
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
         </collision>   
-        <xacro:inertial_matrix_cylinder mass="4" height="0.4" radius="0.4" />
+        <xacro:inertial_matrix mass="0.6" ixx="0.000008" ixy="0" ixz="0" iyy="0.000002" iyz="0.000001" izz="0.000009" xyz="0.001689 0.073328 0.021330" />
     </link>
     <gazebo reference="robot_support" />
 
@@ -37,7 +37,7 @@
             </geometry>
             <origin rpy="0 0 0" xyz="0 -0.021165 0" />
         </collision>
-        <xacro:inertial_matrix_cylinder mass="0.5" height="0.04" radius="0.4" />
+        <xacro:inertial_matrix mass="0.05" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="0 0.020888 0.046075" />
     </link>
     <gazebo reference="robot_base_cylinder" />
 
@@ -54,7 +54,7 @@
             </geometry>
             <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="1.5" depth="3" height="4" width="6" />
+        <xacro:inertial_matrix mass="0.05" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="-0.007419 0.026465 0.069384" />
     </link>
     <gazebo reference="robot_base_top_box" />   
 
@@ -71,7 +71,7 @@
             </geometry>
             <origin rpy="${-PI/8} 0 0" xyz="0 -0.035 -0.06" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.5" depth="17" height="2" width="11" />
+        <xacro:inertial_matrix mass="0.4" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="0.0014 -0.009124 0.113692" />
     </link>
     <gazebo reference="shoulder" />
 
@@ -88,7 +88,7 @@
             </geometry>
             <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </collision>
-        <xacro:inertial_matrix_box mass="2" depth="0.3" height="0.7" width="0.5" />
+        <xacro:inertial_matrix mass="0.18" ixx="0.000008" ixy="0" ixz="0" iyy="0.000002" iyz="0.000001" izz="0.000009" xyz="-0.002468 -0.119892 0.126276" />
     </link>
     <gazebo reference="arm" />
 
@@ -105,7 +105,7 @@
             </geometry>
             <origin rpy="0 0 0" xyz="0 0.165 -0.065" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.25" depth="0.25" height="0.35" width="0.5" />
+        <xacro:inertial_matrix mass="0.04" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="-0.002314 -0.187551 0.067613" />
     </link>
     <gazebo reference="wrist" />
 
@@ -122,7 +122,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="1" depth="0.12" height="0.2" width="0.6" />
+        <xacro:inertial_matrix mass="0.031" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="-0.007640 0.007645 0.002347" />
     </link>
     <gazebo reference="gripper" />
 
@@ -139,7 +139,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.05" depth="0.12" height="1.5" width="0.08" />
+        <xacro:inertial_matrix mass="0.02" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="0.01688 0.003755 -0.016411"/>
     </link>
     <gazebo reference="left_finger" />
             
@@ -156,7 +156,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_box mass="0.05" depth="0.12" height="1.5" width="0.08" />
+        <xacro:inertial_matrix mass="0.02" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="0.016859 0.003755 0.021112" />
     </link>
     <gazebo reference="right_finger" />
 
@@ -175,6 +175,7 @@
             <origin rpy="0 0 0" xyz="0 0 ${camera_support_depth}" />
             <material name="Transparent" />
         </collision>
+        <xacro:inertial_matrix_box mass="0.05" depth="0.01" height="0.01" width="0.01" />
     </link>
     <gazebo reference="camera_link" />
 
@@ -251,13 +252,14 @@
     <joint name="finger_left_mov" type="prismatic">
         <parent link="gripper" />
         <child link="left_finger" />
-        <limit effort="10" velocity="1" lower="0" upper="${-gripper_base_width/2}" />
+        <limit effort="10" velocity="0.001" upper="0" lower="${-gripper_base_width/2}" />
     </joint>
 
     <joint name="finger_right_mov" type="prismatic">
         <parent link="gripper" />
         <child link="right_finger" />
-        <limit effort="10" velocity="1" lower="0" upper="${gripper_base_width/2}" />
+        <limit effort="10" velocity="0.001" lower="0" upper="${gripper_base_width/2}" />
+        <mimic joint="finger_left_mov" multiplier="-1" />
     </joint>
 
     

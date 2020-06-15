@@ -86,6 +86,14 @@
         </inertial>
     </xacro:macro>
 
+    <xacro:macro name="inertial_matrix" params="mass ixx ixy ixz iyy iyz izz xyz">
+        <inertial>
+            <origin rpy="0 0 0" xyz="${xyz}" />
+            <mass value="${mass}" />
+            <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+        </inertial>
+    </xacro:macro>
+
     <xacro:macro name="inertial_matrix_box" params="mass height width depth">
         <inertial>
             <mass value="${mass}" />
