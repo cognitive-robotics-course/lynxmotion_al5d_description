@@ -1,0 +1,11 @@
+dependent_joints:
+    finger_right_mov: {parent: finger_left_mov, factor: -1}
+
+zeros:
+    link1_rotz: 0
+    link1_rotx: 1.57
+    link2_rotx: -1.57
+    link3_rotx: 0
+    link4_rotx: 0
+    finger_left_mov: 0.005
+    finger_right_mov: -0.005
