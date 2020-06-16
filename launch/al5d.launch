@@ -2,7 +2,8 @@
     <arg name="model" />
     <!-- Parsing xacro and setting robot description parameter -->
     <param name="robot_description" command="$(find xacro)/xacro.py $(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro" />
-
+    
+    <rosparam command="load" file="$(find lynxmotion_al5d_description)/config/robot_config.yaml" />
     <!-- Setting gui parameter to true for display joint slider -->
     <!-- Starting Joint state publisher which will publish the joint values -->
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />

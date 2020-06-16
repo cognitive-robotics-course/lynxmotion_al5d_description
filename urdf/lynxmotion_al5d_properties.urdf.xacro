@@ -82,14 +82,55 @@
     <xacro:macro name="inertial_matrix_cylinder" params="mass height radius">
         <inertial>
             <mass value="${mass}" />
-            <inertia ixx="${(3*radius*radius + height*height)*mass/12}" ixy="0.0" ixz="0.0" iyx="0.0" iyy="${(3*radius*radius + height*height)*mass/12}" iyz="0.0" izx="0.0" izy="0.0" izz="${(mass*radius*radius)/2}" />
+            <inertia ixx="${(3*radius*radius + height*height)*mass/12}" ixy="0.0" ixz="0.0" iyy="${(3*radius*radius + height*height)*mass/12}" iyz="0.0" izz="${(mass*radius*radius)/2}" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="inertial_matrix" params="mass ixx ixy ixz iyy iyz izz xyz">
+        <inertial>
+            <origin rpy="0 0 0" xyz="${xyz}" />
+            <mass value="${mass}" />
+            <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
         </inertial>
     </xacro:macro>
 
     <xacro:macro name="inertial_matrix_box" params="mass height width depth">
         <inertial>
             <mass value="${mass}" />
-            <inertia ixx="${(depth*depth + height*height)*mass/12}" ixy="0.0" ixz="0.0" iyx="0.0" iyy="${(width*width + depth*depth)*mass/12}" iyz="0.0" izx="0.0" izy="0.0" izz="${(width*width + height*height)*mass/12}" />
+            <inertia ixx="${(depth*depth + height*height)*mass/12}" ixy="0.0" ixz="0.0" iyy="${(width*width + depth*depth)*mass/12}" iyz="0.0" izz="${(width*width + height*height)*mass/12}" />
         </inertial>
     </xacro:macro>
+
+   <xacro:macro name="inertial_matrix_bis" params="mass">
+      <inertial>
+        <mass value="${mass}" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0" />
+      </inertial>
+   </xacro:macro>
+
+    <xacro:macro name="transmission_block" params="joint_name">
+        <transmission name="tran1">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="motor1">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+   </xacro:macro>
+
+    <xacro:macro name="transmission_block_finger" params="joint_name">
+        <transmission name="tran2">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="motor2">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+   </xacro:macro>
 </robot>
