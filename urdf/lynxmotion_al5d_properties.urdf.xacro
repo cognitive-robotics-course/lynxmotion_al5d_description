@@ -101,14 +101,34 @@
         </inertial>
     </xacro:macro>
 
+   <xacro:macro name="inertial_matrix_bis" params="mass">
+      <inertial>
+        <mass value="${mass}" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0" />
+      </inertial>
+   </xacro:macro>
+
     <xacro:macro name="transmission_block" params="joint_name">
         <transmission name="tran1">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="${joint_name}">
-                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             </joint>
             <actuator name="motor1">
-                <hardwareInterface>PositionJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+   </xacro:macro>
+
+    <xacro:macro name="transmission_block_finger" params="joint_name">
+        <transmission name="tran2">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="motor2">
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
         </transmission>
