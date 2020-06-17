@@ -41,7 +41,7 @@ After successful installation of the packages listed above, you can visualize th
 
  from your terminal. This will open up a Gazebo with the robot spawned at the center of an empty world. Zoom in to see closer and observe the robot movement carefully as seen below.
 
-![Lynxmotion AL5D spawned in an empty Gazebo simulation world](screenshots/robot_in_gazebo.jpg?raw=true "Overview of the simulated robot in Gazebo")
+![Lynxmotion AL5D spawned in an empty Gazebo simulation world](screenshots/robot_in_gazebo.png?raw=true "Overview of the simulated robot in Gazebo")
 
 Beside opening the Gazebo window, issuing the previous command also creates a set of ROS topics for the joints and also the external camera added to the robot model. You can view the topics by running the following command in a terminal.
 
@@ -50,7 +50,7 @@ Beside opening the Gazebo window, issuing the previous command also creates a se
 This will print out the list of all available topics among which you will observe some with the prefix `lynxmotion_al5d` which refers to the simulators subsribers and publishers. The image below, picturing the joints of the AL5D robot shows the mapping of each controller to the physical robot joints.
 
 
-![Mapping of the controllers to the robot joint](screenshots/controllers_mapping.png?raw=true "Mapping the controllers to the robot joint")
+![Mapping of the controllers to the robot joint](screenshots/controllers_mapping.jpg?raw=true "Mapping the controllers to the robot joint")
 
 ### Sending joint values to the Gazebo simulator
 The syntax for sending joint positions to the simulated robot is:
