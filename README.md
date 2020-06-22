@@ -15,6 +15,7 @@ roscd
 cd ../src
 git clone https://github.com/CRAM-Team/lynxmotion_al5d_description.git 
 ```
+
 You can then run the visualization by issuing the command 
 
 `roslaunch lynxmotion_al5d_description al5d.launch`
