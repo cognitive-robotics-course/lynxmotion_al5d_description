@@ -1,0 +1,35 @@
+lynxmotion_al5d:
+    # Publish all joint states -----------------------------------
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50  
+  
+    # Position Controllers ---------------------------------------
+    shoulder_controller:
+        type: position_controllers/JointPositionController
+        joint: link1_rotx
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    robot_orientation_controller:
+        type: position_controllers/JointPositionController
+        joint: link1_rotz
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    arm_controller:
+        type: position_controllers/JointPositionController
+        joint: link2_rotx
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    wrist_controller:
+        type: position_controllers/JointPositionController
+        joint: link3_rotx
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    gripper_controller:
+        type: position_controllers/JointPositionController
+        joint: link4_rotz
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    left_finger_controller:
+        type: position_controllers/JointPositionController
+        joint: finger_left_mov
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    right_finger_controller:
+        type: position_controllers/JointPositionController
+        joint: finger_right_mov
+        pid: {p: 100.0, i: 0.01, d: 10.0}
