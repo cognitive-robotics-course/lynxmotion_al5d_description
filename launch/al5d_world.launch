@@ -16,7 +16,7 @@
     </include>    
 
     <!-- Load the URDF into the ROS Parameter Server -->   
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" />      
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.gazebo.xacro'" />      
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->   
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -model lynxmotion_al5d -param robot_description -J link1_rotx 1.97 -J link2_rotx -1.97 -J finger_left_mov 0.005 -unpause"/>  

@@ -6,14 +6,7 @@
     <rosparam file="$(find lynxmotion_al5d_description)/config/robot_control.yaml" />
 
     <!-- Load the controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/lynxmotion_al5d" args="joint_state_controller 
-        shoulder_controller 
-        robot_orientation_controller 
-        arm_controller 
-        wrist_controller 
-        gripper_controller
-        right_finger_controller
-        left_finger_controller" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/lynxmotion_al5d" args="joint_state_controller" />
 
     <!-- Convert joint states to TF transforms for Rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
