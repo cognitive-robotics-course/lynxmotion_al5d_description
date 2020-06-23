@@ -5,7 +5,23 @@
     <xacro:include filename="$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />
 
     <!-- Base link comprising the board behind the robot and the cylinder at its bottom -->
-    <!--<link name="world" /> -->
+    <!-- <link name="world">
+        <visual>
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+        </collision>
+        <xacro:inertial_matrix_bis mass="1" />
+    </link>
+    <gazebo reference="world" /> -->
+            
     
     <link name="robot_support">
         <visual>
@@ -54,7 +70,6 @@
             </geometry>
             <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
         </collision>
-         <!-- <xacro:inertial_matrix mass="0.084" ixx="7.063e-8" ixy="2.68e-9" ixz="1.7e-10" iyy="5.396e-8" iyz="9.3e-10" izz="9.744e-8" xyz="-0.007418 0.026464 0.069384" /> -->
         <xacro:inertial_matrix_bis mass="0.184" />
     </link>
     <gazebo reference="robot_base_top_box" />   
@@ -64,15 +79,14 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/shoulder.dae" />
             </geometry>
-            <origin rpy="${-PI/8} 0 0" xyz="0 -0.035 -0.06" />
+            <origin rpy="${-5*PI/8} 0 0" xyz="0 -0.0625 0.036" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/shoulder.dae" />
             </geometry>
-            <origin rpy="${-PI/8} 0 0" xyz="0 -0.035 -0.06" />
+            <origin rpy="${-5*PI/8} 0 0" xyz="0 -0.0625 0.036" />
         </collision>
-        <!-- <xacro:inertial_matrix mass="0.035" ixx="6.151e-8" ixy="-2.57e-9" ixz="6.03e-9" iyy="7.851e-8" iyz="2.106e-8" izz="3.803e-8" xyz="0.001399 -0.009123 0.113692" /> -->
         <xacro:inertial_matrix_bis mass="0.095" />
     </link>
     <gazebo reference="shoulder" />
@@ -90,7 +104,6 @@
             </geometry>
             <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </collision>
-        <!--<xacro:inertial_matrix mass="0.18" ixx="0.000008" ixy="0" ixz="0" iyy="0.000002" iyz="0.000001" izz="0.000009" xyz="-0.002468 -0.119892 0.126276" /> -->
         <xacro:inertial_matrix_bis mass="0.1" />
     </link>
     <gazebo reference="arm" />
@@ -100,16 +113,15 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/wrist.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 0.165 -0.065" />
+            <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.067" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/wrist.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 0.165 -0.065" />
+            <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.067" />
         </collision>
-        <!-- <xacro:inertial_matrix mass="0.04" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="-0.002314 -0.187551 0.067613" /> -->
-            <xacro:inertial_matrix_bis mass="0.055" />
+        <xacro:inertial_matrix_bis mass="0.055" />
     </link>
     <gazebo reference="wrist" />
 
@@ -118,15 +130,14 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/gripper.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.021 -0.005" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/gripper.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.021 -0.005" />
         </collision>
-        <!--<xacro:inertial_matrix mass="0.031" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="-0.007640 0.007645 0.002347" /> -->
         <xacro:inertial_matrix_bis mass="0.042" />
     </link>
     <gazebo reference="gripper" />
@@ -136,15 +147,14 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.012 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.012 0" />
         </collision>
-        <!-- <xacro:inertial_matrix mass="0.02" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="0.01688 0.003755 -0.016411"/> -->
         <xacro:inertial_matrix_bis mass="0.0006" />
     </link>
     <gazebo reference="left_finger" />
@@ -154,15 +164,14 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.012 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 0 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.012 0" />
         </collision>
-         <!-- <xacro:inertial_matrix mass="0.02" ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" xyz="0.01688 0.003755 -0.016411"/> -->
         <xacro:inertial_matrix_bis mass="0.0006" />
     </link>
     <gazebo reference="right_finger" />
@@ -195,7 +204,7 @@
     </sensor> 
 
     <!-- Adding joints -->
-    <!--<joint name="world_to_robot" type="fixed">
+    <!-- <joint name="world_to_robot" type="fixed">
         <parent link="world" />
         <child link="robot_support" />
         <dynamics damping="0" friction="0" />
@@ -208,7 +217,7 @@
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-    <joint name="link1_rotz" type="revolute">
+    <joint name="Joint1" type="revolute">
         <parent link="robot_support" />
         <child link="robot_base_cylinder" />
         <axis xyz="0 0 1" />
@@ -218,72 +227,74 @@
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-    <joint name="robot_base_fixed" type="fixed">
+    <joint name="base_to_cylinder" type="fixed">
         <parent link="robot_base_cylinder" />
         <child link="robot_base_top_box" />
         <dynamics damping="10" friction="0.7" />
     </joint>
  
-    <joint name="link1_rotx" type="revolute">
+    <joint name="Joint2" type="revolute">
         <parent link="robot_base_top_box" />
         <child link="shoulder" />
         <axis xyz="1 0 0" />
         <origin xyz="0 -0.015 0.071" />
-        <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
+        <limit effort="10" velocity="1" lower="0" upper="${PI}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-    <joint name="link2_rotx" type="revolute">
+    <joint name="Joint3" type="revolute">
         <parent link="shoulder" />
         <child link="arm" />
         <axis xyz="1 0 0" />
-        <origin xyz="0 0 ${shoulder_to_elbow}" />
+        <origin xyz="0 ${shoulder_to_elbow} 0" />
         <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-    <joint name="link3_rotx" type="revolute">
+    <joint name="Joint4" type="revolute">
         <parent link="arm" />
         <child link="wrist" />
         <axis xyz="1 0 0" />
-        <origin xyz="0 ${-tube_length - hs_645_depth + 0.003} 0" />
+        <origin xyz="0 ${-tube_length - hs_645_depth + 0.003} 0" rpy="0 0 ${PI}"/>
         <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-   <joint name="link4_rotz" type="revolute">
+   <joint name="Joint5" type="revolute">
         <parent link="wrist" />
         <child link="gripper" />
         <axis xyz="0 1 0" />
-        <origin xyz="0 -0.055 0" rpy="0 0 0" />
+        <origin xyz="0 0.04 -0.005" rpy="0 0 ${PI}" />
         <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-   <joint name="finger_left_mov" type="prismatic">
+   <joint name="Gripper" type="prismatic">
         <parent link="gripper" />
         <child link="left_finger" />
+        <origin xyz="0 -0.01 0" />
         <limit effort="10" velocity="0.005" upper="0" lower="${-gripper_base_width/2}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-   <joint name="finger_right_mov" type="prismatic">
+   <joint name="GripperBis" type="prismatic">
         <parent link="gripper" />
         <child link="right_finger" />
+        <origin xyz="0 -0.01 0" />
         <limit effort="10" velocity="0.001" lower="0" upper="${gripper_base_width/2}" />
-        <mimic joint="finger_left_mov" multiplier="-1" />
+        <mimic joint="Gripper" multiplier="-1" />
         <dynamics damping="10" friction="0.7" />
     </joint> 
 
     
     <!-- Setting transmissions -->
-    <xacro:transmission_block joint_name="link1_rotx"/>
-    <xacro:transmission_block joint_name="link1_rotz"/>
-    <xacro:transmission_block joint_name="link2_rotx"/>
-    <xacro:transmission_block joint_name="link3_rotx"/>
-    <xacro:transmission_block joint_name="link4_rotz"/>
-    <xacro:transmission_block_finger joint_name="finger_right_mov"/>
-    <xacro:transmission_block_finger joint_name="finger_left_mov"/>
+    <xacro:transmission_block joint_name="Joint1"/>
+    <xacro:transmission_block joint_name="Joint2"/>
+    <xacro:transmission_block joint_name="Joint3"/>
+    <xacro:transmission_block joint_name="Joint4"/>
+    <xacro:transmission_block joint_name="Joint5"/>
+    <xacro:transmission_block_finger joint_name="Gripper"/>
+    <xacro:transmission_block_finger joint_name="GripperBis"/>
 
       <!-- ros_control plugin -->
     <gazebo>
