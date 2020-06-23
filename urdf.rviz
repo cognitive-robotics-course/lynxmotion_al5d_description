@@ -107,10 +107,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         wrist:
           Alpha: 1
           Show Axes: false
@@ -126,7 +122,7 @@ Visualization Manager:
   Global Options:
     Background Color: 23; 0; 119
     Default Light: true
-    Fixed Frame: world
+    Fixed Frame: robot_support
     Frame Rate: 30
   Name: root
   Tools:

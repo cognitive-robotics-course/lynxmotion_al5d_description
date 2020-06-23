@@ -5,31 +5,31 @@ lynxmotion_al5d:
         publish_rate: 50  
   
     # Position Controllers ---------------------------------------
-    shoulder_controller:
-        type: position_controllers/JointPositionController
-        joint: link1_rotx
-        pid: {p: 100.0, i: 0.01, d: 10.0}
     robot_orientation_controller:
         type: position_controllers/JointPositionController
-        joint: link1_rotz
+        joint: Joint1
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    shoulder_controller:
+        type: position_controllers/JointPositionController
+        joint: Joint2
         pid: {p: 100.0, i: 0.01, d: 10.0}
     arm_controller:
         type: position_controllers/JointPositionController
-        joint: link2_rotx
+        joint: Joint3
         pid: {p: 100.0, i: 0.01, d: 10.0}
     wrist_controller:
         type: position_controllers/JointPositionController
-        joint: link3_rotx
+        joint: Joint4
         pid: {p: 100.0, i: 0.01, d: 10.0}
     gripper_controller:
         type: position_controllers/JointPositionController
-        joint: link4_rotz
+        joint: Joint5
         pid: {p: 100.0, i: 0.01, d: 10.0}
     left_finger_controller:
         type: position_controllers/JointPositionController
-        joint: finger_left_mov
+        joint: Gripper
         pid: {p: 100.0, i: 0.01, d: 10.0}
     right_finger_controller:
         type: position_controllers/JointPositionController
-        joint: finger_right_mov
+        joint: GripperBis
         pid: {p: 100.0, i: 0.01, d: 10.0}

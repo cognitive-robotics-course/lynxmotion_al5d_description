@@ -1,8 +1,13 @@
 <?xml version="1.0" ?>
 
 <robot name="lynxmotion_al5d" xmlns:xacro="http://www.ros.org/wiki/xacro" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
-    
-    <xacro:include filename="$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />            
+
+<!-- This file has been created specifically to run with Gazebo since this requires a specific link named world for the robot to stick to the map -->
+
+    <xacro:include filename="$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />
+
+    <!-- Base link comprising the board behind the robot and the cylinder at its bottom -->
+    <link name="world" />
     
     <link name="robot_support">
         <visual>
@@ -185,16 +190,22 @@
     </sensor> 
 
     <!-- Adding joints -->
-    <!-- <joint name="world_to_robot" type="fixed">
+    <joint name="world_to_robot" type="fixed">
         <parent link="world" />
         <child link="robot_support" />
         <dynamics damping="0" friction="0" />
-    </joint> -->
+    </joint>
 
     <joint name="camera_joint" type="fixed">
         <parent link="robot_support" />
         <child link="camera_link" />
         <origin xyz="0 -0.35 0" />
+        <dynamics damping="10" friction="0.7" />
+    </joint>
+
+    <joint name="robot_base_fixed" type="fixed">
+        <parent link="robot_base_cylinder" />
+        <child link="robot_base_top_box" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
@@ -205,12 +216,6 @@
         <origin xyz="0 0.021 0" />
         <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
         <dynamics damping="0" friction="0" />
-        <dynamics damping="10" friction="0.7" />
-    </joint>
-
-    <joint name="base_to_cylinder" type="fixed">
-        <parent link="robot_base_cylinder" />
-        <child link="robot_base_top_box" />
         <dynamics damping="10" friction="0.7" />
     </joint>
  
@@ -262,7 +267,7 @@
         <parent link="gripper" />
         <child link="right_finger" />
         <origin xyz="0 -0.01 0" />
-        <limit effort="10" velocity="0.001" lower="0" upper="${gripper_base_width/2}" />
+        <limit effort="10" velocity="0.005" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-1" />
         <dynamics damping="10" friction="0.7" />
     </joint> 
