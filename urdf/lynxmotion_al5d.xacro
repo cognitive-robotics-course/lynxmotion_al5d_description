@@ -2,20 +2,20 @@
 
 <robot name="lynxmotion_al5d" xmlns:xacro="http://www.ros.org/wiki/xacro" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
     
-    <xacro:include filename="$(find al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />
+    <xacro:include filename="$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />
 
     <!-- Base link comprising the board behind the robot and the cylinder at its bottom -->
     
     <link name="base_link">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/support.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/support.dae" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
         </visual>   
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/support.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/support.dae" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
         </collision>   
@@ -26,13 +26,13 @@
     <link name="robot_base_cylinder">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 -0.021165 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 -0.021165 0" />
         </collision>
@@ -43,13 +43,13 @@
     <link name="robot_base_top_box">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/top_box.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
             <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/top_box.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
             <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
         </collision>
@@ -60,13 +60,13 @@
     <link name="shoulder">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/shoulder.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/shoulder.dae" />
             </geometry>
             <origin rpy="${-5*PI/8} 0 0" xyz="0 -0.0625 0.036" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/shoulder.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/shoulder.dae" />
             </geometry>
             <origin rpy="${-5*PI/8} 0 0" xyz="0 -0.0625 0.036" />
         </collision>
@@ -77,13 +77,13 @@
     <link name="arm">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/arm.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
             <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/arm.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
             <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </collision>
@@ -94,13 +94,13 @@
     <link name="wrist">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/wrist.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/wrist.dae" />
             </geometry>
             <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.067" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/wrist.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/wrist.dae" />
             </geometry>
             <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.067" />
         </collision>
@@ -111,13 +111,13 @@
     <link name="gripper">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/gripper.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/gripper.dae" />
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.021 -0.005" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/gripper.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/gripper.dae" />
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.021 -0.005" />
         </collision>
@@ -128,13 +128,13 @@
     <link name="left_finger">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/finger_left.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.012 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/finger_left.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.012 0" />
         </collision>
@@ -145,13 +145,13 @@
     <link name="right_finger">
         <visual>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/finger_right.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.012 0" />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://al5d_description/meshes/robot_parts/finger_right.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.012 0" />
         </collision>
