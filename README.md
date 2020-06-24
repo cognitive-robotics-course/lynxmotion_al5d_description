@@ -48,26 +48,32 @@ Beside opening the Gazebo window, issuing the previous command also creates a se
 
 `rostopic list`
 
-This will print out the list of all available topics among which you will observe some with the prefix `lynxmotion_al5d` which refers to the simulators subsribers and publishers. The image below, picturing the joints of the AL5D robot shows the mapping of each controller to the physical robot joints.
-
-
-![Mapping of the controllers to the robot joint](screenshots/controllers_mapping.jpg?raw=true "Mapping the controllers to the robot joint")
+This will print out the list of all available topics among which you will observe some with the prefix `lynxmotion_al5d` which refers to the simulators subsribers and publishers. Among the important topics here, we have one publisher for the robot joint states (`/lynxmotion_al5d/joint_states`), another for publishing all the joint values at once (`/lynxmotion_al5d/joints_positions/command`) and a topic to access the images from the camera sensor attached to the robot.
 
 ### Sending joint values to the Gazebo simulator
 The syntax for sending joint positions to the simulated robot is:
 ```bash
-rostopic pub -1 /lynxmotion_al5d/[controller_name]/command std_msgs/Float64 "data: [joint_position]"
+rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: <Array of the joint values for the seven joints>"
 ```
-*Note: You should make sure that the joint values that you are sending are inside the acceptable range as described below:*
+*Note: The available joints and they positions on the robot are shown in the following images. Also, the order of the values to send to the robot are: Joint1, Joint2, Joint3, Joint4, Joint5, Gripper, GripperBis*
+
+![Simulated robot joints positions mapping](screenshots/joints_mapping.png?raw=true "Mapping the robot joints")
+
+The range of the values acceptable by the joints are as follows:
 ```
-link1_rotx: [-PI/2; PI/2]
-link1_rotz: [-PI; PI]
-link2_rotx: [-PI/2; PI/2]
-link3_rotx: [-PI/2; PI/2]
-link4_rotz: [-PI; PI]
-left_finger_mov: [-0.02; 0]
-right_finger_mov: [0; 0.02]
+Joint1: [-PI/2; PI/2]
+Joint2: [-PI; PI]
+Joint3: [-PI/2; PI/2]
+Joint4: [-PI/2; PI/2]
+Joint5: [-PI; PI]
+Gripper: [-0.02; 0]
+GripperBis: [0; 0.02]
 ```
+For example, to send the robot the joint values for the initial/home position, we would run the following command:
+`rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, -0.015, 0.015]"`
+
+### Accessing the joint states
+The `joint_states` publisher publishes the robot joint states at a rate of 50Hz (i.e every 2ms). In order to access the positions of the joints from the terminal, the command to run is `rostopic echo /lynxmotion_al5d/joint_states`. The output is very verbose so it is advised, if possible, to redirect the output to a file.
 
 ### Accessing the vision sensor
 To view the images captured by the external vision sensor added to the model. run the following command from a terminal. (The camera is represented by a transparent cube in the simulation world)
