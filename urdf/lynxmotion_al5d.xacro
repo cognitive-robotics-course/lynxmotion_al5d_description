@@ -5,23 +5,6 @@
     <xacro:include filename="$(find al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />
 
     <!-- Base link comprising the board behind the robot and the cylinder at its bottom -->
-    <!-- <link name="world">
-        <visual>
-            <geometry>
-                <box size="0.001 0.001 0.001" />
-            </geometry>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-        </visual>
-        <collision>
-            <geometry>
-                <box size="0.001 0.001 0.001" />
-            </geometry>
-            <origin rpy="0 0 0" xyz="0 0 0" />
-        </collision>
-        <xacro:inertial_matrix_bis mass="1" />
-    </link>
-    <gazebo reference="world" /> -->
-            
     
     <link name="base_link">
         <visual>
@@ -204,11 +187,6 @@
     </sensor> 
 
     <!-- Adding joints -->
-    <!-- <joint name="world_to_robot" type="fixed">
-        <parent link="world" />
-        <child link="base_link" />
-        <dynamics damping="0" friction="0" />
-    </joint> -->
 
     <joint name="camera_joint" type="fixed">
         <parent link="base_link" />
@@ -324,7 +302,7 @@
                 <robotNamespace>/lynxmotion_al5d</robotNamespace>
                 <alwaysOn>true</alwaysOn>
                 <updateRate>1.0</updateRate>
-                <cameraName>al5d_external_vision</cameraName>
+                <cameraName>camera</cameraName>
                 <imageTopicName>image_raw</imageTopicName>
                 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
                 <frameName>camera_link</frameName>

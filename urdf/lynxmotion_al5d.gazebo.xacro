@@ -7,7 +7,7 @@
     <xacro:include filename="$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d_properties.urdf.xacro" />
 
     <!-- Base link comprising the board behind the robot and the cylinder at its bottom -->
-    <!-- <link name="world" /> -->
+    <link name="world" />
     
     <link name="robot_support">
         <visual>
@@ -190,11 +190,11 @@
     </sensor> 
 
     <!-- Adding joints -->
-    <!-- <joint name="world_to_robot" type="fixed">
+    <joint name="world_to_robot" type="fixed">
         <parent link="world" />
         <child link="robot_support" />
         <dynamics damping="0" friction="0" />
-    </joint> -->
+    </joint>
 
     <joint name="camera_joint" type="fixed">
         <parent link="robot_support" />
@@ -311,7 +311,7 @@
                 <robotNamespace>/lynxmotion_al5d</robotNamespace>
                 <alwaysOn>true</alwaysOn>
                 <updateRate>1.0</updateRate>
-                <cameraName>al5d_external_vision</cameraName>
+                <cameraName>camera</cameraName>
                 <imageTopicName>image_raw</imageTopicName>
                 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
                 <frameName>camera_link</frameName>
