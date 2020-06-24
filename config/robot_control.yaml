@@ -1,35 +1,29 @@
+/gazebo_ros_control:
+    pid_gains:
+      Joint1: {p: 100.0, i: 0.01, d: 10.0}
+      Joint2: {p: 100.0, i: 0.01, d: 10.0}
+      Joint3: {p: 100.0, i: 0.01, d: 10.0}
+      Joint4: {p: 100.0, i: 0.01, d: 10.0}
+      Joint5: {p: 100.0, i: 0.01, d: 10.0}
+      Gripper: {p: 100.0, i: 0.01, d: 10.0}
+      GripperBis: {p: 100.0, i: 0.01, d: 10.0}
+
 lynxmotion_al5d:
     # Publish all joint states -----------------------------------
     joint_state_controller:
         type: joint_state_controller/JointStateController
         publish_rate: 50  
+
+    # Controller for all joints
+    joints_positions:
+        type: position_controllers/JointGroupPositionController
+        joints:
+            - Joint1
+            - Joint2
+            - Joint3
+            - Joint4
+            - Joint5
+            - Gripper
+            - GripperBis
   
-    # Position Controllers ---------------------------------------
-    robot_orientation_controller:
-        type: position_controllers/JointPositionController
-        joint: Joint1
-        pid: {p: 100.0, i: 0.01, d: 10.0}
-    shoulder_controller:
-        type: position_controllers/JointPositionController
-        joint: Joint2
-        pid: {p: 100.0, i: 0.01, d: 10.0}
-    arm_controller:
-        type: position_controllers/JointPositionController
-        joint: Joint3
-        pid: {p: 100.0, i: 0.01, d: 10.0}
-    wrist_controller:
-        type: position_controllers/JointPositionController
-        joint: Joint4
-        pid: {p: 100.0, i: 0.01, d: 10.0}
-    gripper_controller:
-        type: position_controllers/JointPositionController
-        joint: Joint5
-        pid: {p: 100.0, i: 0.01, d: 10.0}
-    left_finger_controller:
-        type: position_controllers/JointPositionController
-        joint: Gripper
-        pid: {p: 100.0, i: 0.01, d: 10.0}
-    right_finger_controller:
-        type: position_controllers/JointPositionController
-        joint: GripperBis
         pid: {p: 100.0, i: 0.01, d: 10.0}
