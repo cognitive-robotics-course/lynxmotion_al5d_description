@@ -45,13 +45,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.007 0.024 0" rpy="0 0 ${PI}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.007 0.024 0" rpy="0 0 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.184" />
     </link>
@@ -79,13 +79,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
-            <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
+            <origin rpy="${-PI-0.895} 0 0" xyz="0 ${tube_length - 2*hs_755eb_depth/5} ${shoulder_to_elbow + 0.02}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
-            <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
+            <origin rpy="${-PI-0.895} 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.1" />
     </link>
@@ -198,8 +198,8 @@
     <joint name="Joint1" type="revolute">
         <parent link="base_link" />
         <child link="robot_base_cylinder" />
-        <axis xyz="0 0 1" />
-        <origin xyz="0 0.021 0" />
+        <axis xyz="0 0 -1" />
+        <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
         <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
         <dynamics damping="0" friction="0" />
         <dynamics damping="10" friction="0.7" />
@@ -214,8 +214,8 @@
     <joint name="Joint2" type="revolute">
         <parent link="robot_base_top_box" />
         <child link="shoulder" />
-        <axis xyz="1 0 0" />
-        <origin xyz="0 -0.015 0.071" />
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0.015 0.071"  rpy="0 0 0" />
         <limit effort="10" velocity="1" lower="0" upper="${PI}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
@@ -233,7 +233,7 @@
         <parent link="arm" />
         <child link="wrist" />
         <axis xyz="1 0 0" />
-        <origin xyz="0 ${-tube_length - hs_645_depth + 0.003} 0" rpy="0 0 ${PI}"/>
+        <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0" rpy="0 0 0"/>
         <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="10" friction="0.7" />
     </joint>

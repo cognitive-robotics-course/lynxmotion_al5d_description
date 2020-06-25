@@ -25,5 +25,4 @@ lynxmotion_al5d:
             - Joint5
             - Gripper
             - GripperBis
-  
         pid: {p: 100.0, i: 0.01, d: 10.0}

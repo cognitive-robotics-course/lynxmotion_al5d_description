@@ -22,7 +22,7 @@
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
         </collision>   
-        <xacro:inertial_matrix mass="0.133" ixx="3.6565e-7" ixy="-3.72e-9" ixz="1e-6" iyy="9.404e-8" iyz="4.375e-8" izz="4.1776e-7" xyz="0.000585 0.0602746 0.0170628" />
+        <xacro:inertial_matrix mass="1" ixx="3.6565e-7" ixy="-3.72e-9" ixz="1e-6" iyy="9.404e-8" iyz="4.375e-8" izz="4.1776e-7" xyz="0.000585 0.0602746 0.0170628" />
     </link>
     <gazebo reference="robot_support" />
 
@@ -39,7 +39,7 @@
             </geometry>
             <origin rpy="0 0 0" xyz="0 -0.021165 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.042" />
+        <xacro:inertial_matrix_bis mass="0.01" />
     </link>
     <gazebo reference="robot_base_cylinder" />
 
@@ -48,15 +48,15 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.007 0.024 0" rpy="0 0 ${PI}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.007 0.024 0" rpy="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.184" />
+        <xacro:inertial_matrix_bis mass="0.6" />
     </link>
     <gazebo reference="robot_base_top_box" />   
 
@@ -73,7 +73,7 @@
             </geometry>
             <origin rpy="${-5*PI/8} 0 0" xyz="0 -0.0625 0.036" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.095" />
+        <xacro:inertial_matrix_bis mass="0.1" />
     </link>
     <gazebo reference="shoulder" />
 
@@ -82,15 +82,15 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
-            <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
+            <origin rpy="${-PI-0.895} 0 0" xyz="0 ${tube_length - 2*hs_755eb_depth/5} ${shoulder_to_elbow + 0.02}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
-            <origin rpy="-0.895 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
+            <origin rpy="${-PI-0.895} 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.1" />
+        <xacro:inertial_matrix_bis mass="0.05" />
     </link>
     <gazebo reference="arm" />
 
@@ -107,7 +107,7 @@
             </geometry>
             <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.067" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.055" />
+        <xacro:inertial_matrix_bis mass="0" />
     </link>
     <gazebo reference="wrist" />
 
@@ -124,7 +124,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.021 -0.005" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.042" />
+        <xacro:inertial_matrix_bis mass="0" />
     </link>
     <gazebo reference="gripper" />
 
@@ -141,7 +141,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.012 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.0006" />
+        <xacro:inertial_matrix_bis mass="0" />
     </link>
     <gazebo reference="left_finger" />
             
@@ -158,7 +158,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.012 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.0006" />
+        <xacro:inertial_matrix_bis mass="0" />
     </link>
     <gazebo reference="right_finger" />
 
@@ -204,30 +204,31 @@
     </joint>
 
 
-    <joint name="Joint1" type="revolute">
+     <joint name="Joint1" type="revolute">
         <parent link="robot_support" />
         <child link="robot_base_cylinder" />
-        <axis xyz="0 0 1" />
-        <origin xyz="0 0.021 0" />
+        <axis xyz="0 0 -1" />
+        <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
         <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
         <dynamics damping="0" friction="0" />
         <dynamics damping="10" friction="0.7" />
     </joint>
- 
-    <joint name="robot_base_fixed" type="fixed">
+
+    <joint name="base_to_cylinder" type="fixed">
         <parent link="robot_base_cylinder" />
         <child link="robot_base_top_box" />
         <dynamics damping="10" friction="0.7" />
     </joint>
-
+ 
     <joint name="Joint2" type="revolute">
         <parent link="robot_base_top_box" />
         <child link="shoulder" />
-        <axis xyz="1 0 0" />
-        <origin xyz="0 -0.015 0.071" />
+        <axis xyz="1 0 0"/>
+        <origin xyz="0 0.015 0.071"  rpy="0 0 0" />
         <limit effort="10" velocity="1" lower="0" upper="${PI}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
+
 
     <joint name="Joint3" type="revolute">
         <parent link="shoulder" />
@@ -242,7 +243,7 @@
         <parent link="arm" />
         <child link="wrist" />
         <axis xyz="1 0 0" />
-        <origin xyz="0 ${-tube_length - hs_645_depth + 0.003} 0" rpy="0 0 ${PI}"/>
+        <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0" rpy="0 0 0"/>
         <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="10" friction="0.7" />
     </joint>
