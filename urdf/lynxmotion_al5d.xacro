@@ -51,7 +51,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="-0.007 0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.007 0.024 0" rpy="0 0 ${PI}" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.184" />
     </link>
@@ -85,7 +85,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
             </geometry>
-            <origin rpy="${-PI-0.895} 0 0" xyz="0 ${-tube_length + 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02}" />
+            <origin rpy="${-PI-0.895} 0 0" xyz="0 ${tube_length - 2*hs_755eb_depth/5} ${shoulder_to_elbow + 0.02}" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.1" />
     </link>
@@ -201,7 +201,6 @@
         <axis xyz="0 0 -1" />
         <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
         <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="0" friction="0" />
         <dynamics damping="10" friction="0.7" />
     </joint>
 
