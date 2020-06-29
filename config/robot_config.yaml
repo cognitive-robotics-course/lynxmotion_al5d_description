@@ -3,9 +3,8 @@ dependent_joints:
 
 zeros:
     Joint1: 0
-    Joint2: 0
-    Joint3: 0
+    Joint2: 1.5708
+    Joint3: -1.5708
     Joint4: 0
     Joint5: 0
-    Gripper: 0.005
-    GripperBis: -0.005
+    Gripper: 0
