@@ -8,7 +8,6 @@ Panels:
         - /Status1
         - /RobotModel1
         - /RobotModel1/Links1
-        - /RobotModel1/Links1/left_finger1
         - /TF1
         - /TF1/Tree1
       Splitter Ratio: 0.585014403
@@ -80,9 +79,14 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        gripper_mov:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_finger:
           Alpha: 1
-          Show Axes: true
+          Show Axes: false
           Show Trail: false
           Value: true
         right_finger:
@@ -136,6 +140,8 @@ Visualization Manager:
           Value: true
         gripper:
           Value: true
+        gripper_mov:
+          Value: true
         left_finger:
           Value: true
         right_finger:
@@ -160,6 +166,8 @@ Visualization Manager:
       Tree:
         world:
           camera_link:
+            {}
+          gripper_mov:
             {}
           robot_support:
             robot_base_cylinder:
@@ -199,7 +207,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.612879276
+      Distance: 0.768795788
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -214,10 +222,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.02979648
+      Pitch: 0.914797187
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.61859465
+      Yaw: 5.6736002
     Saved: ~
 Window Geometry:
   Displays:

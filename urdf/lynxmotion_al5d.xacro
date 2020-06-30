@@ -141,7 +141,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.012 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.0006" />
+        <xacro:inertial_matrix_bis mass="0.006" />
     </link>
     <gazebo reference="left_finger" />
             
@@ -158,7 +158,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.012 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.0006" />
+        <xacro:inertial_matrix_bis mass="0.006" />
     </link>
     <gazebo reference="right_finger" />
 
@@ -252,21 +252,50 @@
         <dynamics damping="10" friction="0.7" />
     </joint>
 
-    <joint name="Gripper" type="prismatic">
+    <joint name="right_finger_joint" type="prismatic">
         <parent link="gripper" />
         <child link="right_finger" />
         <origin xyz="0 -0.01 0" />
         <limit effort="10" velocity="0.01" lower="0" upper="${gripper_base_width/2}" />
-        <dynamics damping="10" friction="0.7" />
+        <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
+        <dynamics damping="10" friction="1" />
     </joint> 
 
-   <joint name="GripperBis" type="prismatic">
+   <joint name="left_finger_joint" type="prismatic">
         <parent link="gripper" />
         <child link="left_finger" />
         <origin xyz="0 -0.01 0" />
-        <limit effort="10" velocity="0.01" upper="0" lower="${-gripper_base_width/2}" />
-        <mimic joint="Gripper" multiplier="-1" />
-        <dynamics damping="10" friction="0.7" />
+        <axis xyz="-1 0 0" />
+        <limit effort="10" velocity="0.01" lower="0" upper="${gripper_base_width/2}" />
+        <mimic joint="right_finger_joint" />
+        <dynamics damping="10" friction="1" />
+    </joint>
+
+    <link name="gripper_mov">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.01" />
+            </geometry>
+            <material name="Transparent" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.01 0.01 0.01" />
+            </geometry>
+        </collision>
+        <xacro:inertial_matrix_box mass="0.01" width="0.01" height="0.01" depth="0.01" />
+    </link>
+    <gazebo reference="gripper_mov" /> -->
+
+    <joint name="Gripper" type="revolute">
+        <parent link="world" />
+        <child link="gripper_mov" />
+        <origin xyz="0 -0.2 0" />
+        <limit lower="0" upper="${gripper_base_width}" effort="10" velocity="0.01" />
+        <axis xyz="1 0 0" />
+        <dynamics damping="50" friction="1" />
     </joint>
     
     <!-- Setting transmissions -->
@@ -284,10 +313,14 @@
             <legacyModeNS>true</legacyModeNS>
         </plugin>
     </gazebo>
- 
-    <xacro:mimic_joint_plugin_gazebo name_prefix="gripper_"
-    parent_joint="Gripper" mimic_joint="GripperBis"
-    has_pid="true" multiplier="-1.0" max_effort="10.0" />
+
+    <xacro:mimic_joint_plugin_gazebo name_prefix="finger_right"
+    parent_joint="Gripper" mimic_joint="right_finger_joint"
+    has_pid="true" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
+
+    <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left_"
+    parent_joint="right_finger_joint" mimic_joint="left_finger_joint"
+    has_pid="true" max_effort="10.0" />
 
 
     <gazebo reference="camera_link">
