@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="model" />
+    <!-- Parsing xacro and setting robot description parameter -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro" />
+    <param name="table_description" command="$(find xacro)/xacro --inorder $(find lynxmotion_al5d_description)/urdf/table.xacro" />
+    
+    <rosparam command="load" file="$(find lynxmotion_al5d_description)/config/robot_config.yaml" />
+    
+    <!-- Starting Joint state publisher which will publish the joint values -->
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+    <node name="table_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <remap from="robot_description" to="table_description" />
+    </node>
+    
+    <!-- Starting robot state publish which will publish tf -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+    <!-- Launch visualization in rviz -->
+    <node name="table_tf_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" value="25" />
+        <remap from="robot_description" to="table_description" />
+    </node>
+
+    <node name="al5d_wrt_map_tf" pkg="tf" type="static_transform_publisher" args="0 0 0.54 0 0 0 /map /world 25" />
+    <node name="table_wrt_map_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /map /table_link 25" />
+
+</launch>
