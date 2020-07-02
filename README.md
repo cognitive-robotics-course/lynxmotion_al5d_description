@@ -71,17 +71,14 @@ rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiA
 
 The range of the values acceptable by the joints are as follows:
 ```markdown
-Joint1: [<img src="https://render.githubusercontent.com/render/math?math=-\pi">; <img src="https://render.githubusercontent.com/render/math?math=\pi">]
-Joint2: [0; $\Pi$]
-Joint3: [-$\Pi$/2; $\Pi$/2]
-Joint4: [-$\Pi$/2; $\Pi$/2]
-Joint5: [-$\Pi$; $\Pi$]
+Joint1: [-PI; PI]
+Joint2: [0; PI]
+Joint3: [-PI/2; PI/2]
+Joint4: [-PI/2; PI/2]
+Joint5: [-PI; PI]
 Gripper: [0; 0.03175]
 ```
 
-```markdown
-<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
-```
 For example, to send the robot the joint values for the initial/home position, we would run the following command:
 `rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, 0.03175]"`
 
