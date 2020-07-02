@@ -36,7 +36,17 @@ sudo apt install ros-kinetic-gazebo-ros-control
 sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers
 ```
 
-After successful installation of the packages listed above, you can visualize the robot in Gazebo by running the command 
+The Gazebo simulation also has a dependency on the [mimic joints plugin from roboticsgroup](https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins). To install the dependency, run the following command.
+
+```bash
+roscd
+cd ../src
+git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+cd ..
+catkin_make
+```
+
+After successful installation of the packages and dependencies listed above, you can visualize the robot in Gazebo by running the command 
 
 `roslaunch lynxmotion_al5d_description al5d_gazebo_control.launch`
 
@@ -53,24 +63,23 @@ This will print out the list of all available topics among which you will observ
 ### Sending joint values to the Gazebo simulator
 The syntax for sending joint positions to the simulated robot is:
 ```bash
-rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: <Array of the joint values for the seven joints>"
+rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: <Array of the joint values for the five joints and distance between the two fingers>"
 ```
-*Note: The available joints and they positions on the robot are shown in the following images. Also, the order of the values to send to the robot are: Joint1, Joint2, Joint3, Joint4, Joint5, Gripper, GripperBis*
+*Note: The available joints and they positions on the robot are shown in the following images. Also, the order of the values to send to the robot are: Joint1, Joint2, Joint3, Joint4, Joint5, Gripper*
 
 ![Simulated robot joints positions mapping](screenshots/joints_mapping.png?raw=true "Mapping the robot joints")
 
 The range of the values acceptable by the joints are as follows:
 ```
-Joint1: [-PI/2; PI/2]
-Joint2: [-PI; PI]
-Joint3: [-PI/2; PI/2]
-Joint4: [-PI/2; PI/2]
-Joint5: [-PI; PI]
-Gripper: [-0.02; 0]
-GripperBis: [0; 0.02]
+Joint1: [-$\Pi$; $\Pi$]
+Joint2: [0; $\Pi$]
+Joint3: [-$\Pi$/2; $\Pi$/2]
+Joint4: [-$\Pi$/2; $\Pi$/2]
+Joint5: [-$\Pi$; $\Pi$]
+Gripper: [0; 0.03175]
 ```
 For example, to send the robot the joint values for the initial/home position, we would run the following command:
-`rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, -0.015, 0.015]"`
+`rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, 0.03175]"`
 
 ### Accessing the joint states
 The `joint_states` publisher publishes the robot joint states at a rate of 50Hz (i.e every 2ms). In order to access the positions of the joints from the terminal, the command to run is `rostopic echo /lynxmotion_al5d/joint_states`. The output is very verbose so it is advised, if possible, to redirect the output to a file.

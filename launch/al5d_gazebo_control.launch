@@ -18,7 +18,7 @@
     <param name="robot_description" command="$(find xacro)/xacro --inorder  '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" />      
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->   
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -model lynxmotion_al5d -param robot_description -J Joint1 0 -J Joint2 1.57 -J Joint3 -1.57 Joint4 0 -J Joint5 0 -J Gripper 0.015 GripperBis 0.015  -unpause"/>  
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -model lynxmotion_al5d -param robot_description -J Joint1 0 -J Joint2 1.57 -J Joint3 -1.57 Joint4 0 -J Joint5 0 -J Gripper 0.03175  -unpause"/>  
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find lynxmotion_al5d_description)/config/robot_control.yaml" />

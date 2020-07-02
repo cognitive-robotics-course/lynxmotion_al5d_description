@@ -328,7 +328,7 @@
         <sensor name="external_camera" type="camera">
             <update_rate>1.0</update_rate>
             <camera name="camera_top">
-                <horizontal_fov>1.0</horizontal_fov>
+                <horizontal_fov>1.3962634</horizontal_fov>
                 <image>
                     <width>640</width>
                     <height>480</height>

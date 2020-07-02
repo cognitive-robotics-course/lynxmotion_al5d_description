@@ -1,6 +1,3 @@
-# dependent_joints:
-#     GripperBis: {parent: Gripper, factor: -1}
-
 zeros:
     Joint1: 0
     Joint2: 1.5708
