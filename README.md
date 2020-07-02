@@ -71,7 +71,7 @@ rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiA
 
 The range of the values acceptable by the joints are as follows:
 ```
-Joint1: [-$\Pi$; $\Pi$]
+Joint1: [<img src="https://render.githubusercontent.com/render/math?math=-\pi">; <img src="https://render.githubusercontent.com/render/math?math=\pi">]
 Joint2: [0; $\Pi$]
 Joint3: [-$\Pi$/2; $\Pi$/2]
 Joint4: [-$\Pi$/2; $\Pi$/2]

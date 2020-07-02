@@ -123,7 +123,7 @@
             <material name="brown" />
             <origin rpy="0 0 0" xyz="0 0 ${support_depth}" />
         </collision>
-        <xacro:inertial_matrix mass="0.5" width="${top_width + 0.3}" height="${top_height + 0.3}" depth="${top_depth}" />
+        <xacro:inertial_matrix mass="1" width="${top_width + 0.3}" height="${top_height + 0.3}" depth="${top_depth}" />
     </link>
     <joint name="top_joint" type="fixed">
         <parent link="table_link" />
