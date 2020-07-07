@@ -133,7 +133,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.009 0" />
         </visual>
         <collision>
             <geometry>
@@ -150,7 +150,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.009 0" />
         </visual>
         <collision>
             <geometry>
@@ -167,17 +167,17 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <box size="0.001 0.001 0.001" />
+                <box size="0.01 0.01 0.01" />
             </geometry>
-            <material name="Transparent" />
+            <material name="Black" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <box size="0.001 0.001 0.001" />
+                <box size="0.01 0.01 0.01" />
             </geometry>
         </collision>
-        <xacro:inertial_matrix_box mass="0.0001" width="0.01" height="0.01" depth="0.01" />
+        <xacro:inertial_matrix_box mass="0.01" width="0.01" height="0.01" depth="0.01" />
     </link>
     <gazebo reference="gripper_mov" />
 
@@ -212,12 +212,14 @@
     <joint name="world_to_robot" type="fixed">
         <parent link="world" />
         <child link="robot_support" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
     <joint name="camera_joint" type="fixed">
         <parent link="world" />
         <child link="camera_link" />
         <origin xyz="0 -0.35 0" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
    <joint name="Joint1" type="revolute">
@@ -268,7 +270,7 @@
         <axis xyz="0 1 0" />
         <origin xyz="0 0.04 -0.005" rpy="0 0 ${PI}" />
         <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="20" friction="0.7" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
     <joint name="right_finger_joint" type="prismatic">
@@ -277,6 +279,7 @@
         <origin xyz="0 -0.015 0" />
         <limit effort="10" velocity="0.01" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
+        <!-- <dynamics damping="10" friction="0.7" /> -->
     </joint> 
 
    <joint name="left_finger_joint" type="prismatic">
@@ -286,12 +289,13 @@
         <axis xyz="-1 0 0" />
         <limit effort="10" velocity="0.01" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="right_finger_joint" />
+        <dynamics damping="10" friction="0.7" />
     </joint>
 
     <joint name="Gripper" type="prismatic">
         <parent link="gripper" />
         <child link="gripper_mov" />
-        <origin xyz="${gripper_base_width/2} 0  0" />
+        <origin xyz="0.01 0  0" />
         <limit lower="0" upper="${gripper_base_width}" effort="10" velocity="0.01" />
         <axis xyz="-1 0 0" />
         <dynamics damping="10" friction="0.7" />
@@ -319,9 +323,9 @@
     parent_joint="Gripper" mimic_joint="right_finger_joint"
     has_pid="true" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
-    <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left_"
+    <!-- <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left_"
     parent_joint="right_finger_joint" mimic_joint="left_finger_joint"
-    has_pid="true" max_effort="10.0" />
+    has_pid="true" max_effort="10.0" sensitiveness="0.01" /> -->
 
 
     <gazebo reference="camera_link">
