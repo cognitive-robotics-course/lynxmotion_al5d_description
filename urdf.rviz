@@ -60,7 +60,7 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        All Links Enabled: false
+        All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -69,12 +69,12 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         gripper:
           Alpha: 1
           Show Axes: false
@@ -94,27 +94,27 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         robot_base_cylinder:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         robot_base_top_box:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         robot_support:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         shoulder:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         world:
           Alpha: 1
           Show Axes: false
@@ -123,7 +123,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -208,7 +208,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.684567928
+      Distance: 0.798649251
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -223,10 +223,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.354797363
+      Pitch: 0.404797316
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.20539415
+      Yaw: 6.23357248
     Saved: ~
 Window Geometry:
   Displays:

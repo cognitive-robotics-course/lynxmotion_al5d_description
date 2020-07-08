@@ -133,13 +133,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.003 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0028 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0028 -0.009 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.006" />
     </link>
@@ -150,13 +150,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.003 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0028 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0028 -0.009 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.006" />
     </link>
@@ -227,7 +227,7 @@
         <child link="robot_base_cylinder" />
         <axis xyz="0 0 -1" />
         <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
-        <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
+        <limit effort="100" velocity="5" lower="${-PI}" upper="${PI}" />
         <dynamics damping="20" friction="1" />
     </joint>
 
@@ -242,7 +242,7 @@
         <child link="shoulder" />
         <axis xyz="1 0 0"/>
         <origin xyz="0 0.015 0.071"  rpy="0 0 0" />
-        <limit effort="10" velocity="1" lower="0" upper="${PI}" />
+        <limit effort="100" velocity="5" lower="0" upper="${PI}" />
         <dynamics damping="20" friction="1" />
     </joint>
 
@@ -251,7 +251,7 @@
         <child link="arm" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${shoulder_to_elbow} 0" />
-        <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
+        <limit effort="100" velocity="5" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="20" friction="1" />
     </joint>
 
@@ -260,7 +260,7 @@
         <child link="wrist" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0" rpy="0 0 0"/>
-        <limit effort="10" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
+        <limit effort="40" velocity="5" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="20" friction="1" />
     </joint>
 
@@ -269,17 +269,16 @@
         <child link="gripper" />
         <axis xyz="0 1 0" />
         <origin xyz="0 0.04 -0.005" rpy="0 0 ${PI}" />
-        <limit effort="10" velocity="1" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="20" friction="1" />
+        <limit effort="100" velocity="5" lower="${-PI}" upper="${PI}" />
+        <dynamics damping="10" friction="0.7" />
     </joint>
 
     <joint name="right_finger_joint" type="prismatic">
         <parent link="gripper" />
         <child link="right_finger" />
         <origin xyz="0 -0.015 0" />
-        <limit effort="10" velocity="0.01" lower="0" upper="${gripper_base_width/2}" />
+        <limit effort="10" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
-        <!-- <dynamics damping="10" friction="0.7" /> -->
     </joint> 
 
    <joint name="left_finger_joint" type="prismatic">
@@ -287,18 +286,17 @@
         <child link="left_finger" />
         <origin xyz="0 -0.015 0" />
         <axis xyz="-1 0 0" />
-        <limit effort="10" velocity="0.01" lower="0" upper="${gripper_base_width/2}" />
+        <limit effort="10" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="right_finger_joint" />
-        <dynamics damping="10" friction="0.7" />
     </joint>
 
+    <!-- Joint that accept the distance between the two fingers as parameter -->
     <joint name="Gripper" type="prismatic">
         <parent link="gripper" />
         <child link="gripper_mov" />
         <origin xyz="0.01 0  0" />
-        <limit lower="0" upper="${gripper_base_width}" effort="10" velocity="0.01" />
+        <limit lower="0" upper="${gripper_base_width}" effort="10" velocity="0.1" />
         <axis xyz="-1 0 0" />
-        <dynamics damping="10" friction="0.7" />
     </joint>
     
     <!-- Setting transmissions -->
@@ -323,9 +321,9 @@
     parent_joint="Gripper" mimic_joint="right_finger_joint"
     has_pid="true" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
-    <!-- <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left_"
-    parent_joint="right_finger_joint" mimic_joint="left_finger_joint"
-    has_pid="true" max_effort="10.0" sensitiveness="0.01" /> -->
+    <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left"
+    parent_joint="Gripper" mimic_joint="left_finger_joint"
+    has_pid="true" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
 
     <gazebo reference="camera_link">

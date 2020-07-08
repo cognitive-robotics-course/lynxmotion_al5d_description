@@ -4,4 +4,4 @@ zeros:
     Joint3: -1.57
     Joint4: 0
     Joint5: 0
-    Gripper: 0.03
+    Gripper: 0.025

@@ -50,7 +50,7 @@ After successful installation of the packages and dependencies listed above, you
 
 `roslaunch lynxmotion_al5d_description al5d_gazebo_control.launch`
 
- from your terminal. This will open up a Gazebo with the robot spawned at the center of an empty world. Zoom in to see closer and observe the robot movement carefully as seen below.
+ from your terminal. This will open up a Gazebo with the robot spawned at the center of an empty world as seen on the image below.
 
 ![Lynxmotion AL5D spawned in an empty Gazebo simulation world](screenshots/robot_in_gazebo.png?raw=true "Overview of the simulated robot in Gazebo")
 
@@ -63,8 +63,11 @@ This will print out the list of all available topics among which you will observ
 ### Sending joint values to the Gazebo simulator
 The syntax for sending joint positions to the simulated robot is:
 ```bash
-rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: <Array of the joint values for the five joints and distance between the two fingers>"
+rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [<Array of the joint values for the five joints and distance between the two fingers>]"
 ```
+For example, to send the robot the joint values for the initial/home position, we would run the following command:
+`rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, 0.03175]"`
+
 *Note: The available joints and they positions on the robot are shown in the following images. Also, the order of the values to send to the robot are: Joint1, Joint2, Joint3, Joint4, Joint5, Gripper*
 
 ![Simulated robot joints positions mapping](screenshots/joints_mapping.png?raw=true "Mapping the robot joints")
@@ -78,9 +81,6 @@ Joint4: [-PI/2; PI/2]
 Joint5: [-PI; PI]
 Gripper: [0; 0.03175]
 ```
-
-For example, to send the robot the joint values for the initial/home position, we would run the following command:
-`rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, 0.03175]"`
 
 ### Accessing the joint states
 The `joint_states` publisher publishes the robot joint states at a rate of 50Hz (i.e every 2ms). In order to access the positions of the joints from the terminal, the command to run is `rostopic echo /lynxmotion_al5d/joint_states`. The output is very verbose so it is advised, if possible, to redirect the output to a file.
