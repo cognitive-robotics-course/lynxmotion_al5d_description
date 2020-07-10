@@ -31,8 +31,11 @@ One limitation of Rviz is that it is just a visualization tool and does not prov
 
 In order to launch the Gazebo simulation, some additional packages are needed that allow to control the joints and to subscribe to their values using the interface between ROS and Gazebo. The set of commands to run for accessing those packages are as follows:
 
-`sudo apt update`
-`sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs
+`
+sudo apt update
+`
+`
+sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs
 `
 `sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
 
