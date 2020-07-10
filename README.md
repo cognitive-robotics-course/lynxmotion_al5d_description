@@ -34,9 +34,11 @@ In order to launch the Gazebo simulation, some additional packages are needed th
 `
 sudo apt update
 `
+
 `
 sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs
 `
+
 `sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
 
 The Gazebo simulation also has a dependency on the [mimic joints plugin from roboticsgroup](https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins). To install the dependency, run the following command.
@@ -65,9 +67,12 @@ This will print out the list of all available topics among which you will observ
 
 ### Sending joint values to the Gazebo simulator
 The syntax for sending joint positions to the simulated robot is:
+
 `rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [<Array of the joint values for the five joints and distance between the two fingers>]"
 `
+
 For example, to send the robot the joint values for the initial/home position, we would run the following command:
+
 `rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, 0.03175]"`
 
 *Note: The available joints and they positions on the robot are shown in the following images. Also, the order of the values to send to the robot are: Joint1, Joint2, Joint3, Joint4, Joint5, Gripper*
