@@ -31,10 +31,10 @@ One limitation of Rviz is that it is just a visualization tool and does not prov
 
 In order to launch the Gazebo simulation, some additional packages are needed that allow to control the joints and to subscribe to their values using the interface between ROS and Gazebo. The set of commands to run for accessing those packages are as follows:
 
-```bash
-sudo apt install ros-kinetic-gazebo-ros-control 
-sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers
-```
+`sudo apt update`
+`sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs
+`
+`sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
 
 The Gazebo simulation also has a dependency on the [mimic joints plugin from roboticsgroup](https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins). To install the dependency, run the following command.
 
@@ -62,9 +62,8 @@ This will print out the list of all available topics among which you will observ
 
 ### Sending joint values to the Gazebo simulator
 The syntax for sending joint positions to the simulated robot is:
-```bash
-rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [<Array of the joint values for the five joints and distance between the two fingers>]"
-```
+`rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [<Array of the joint values for the five joints and distance between the two fingers>]"
+`
 For example, to send the robot the joint values for the initial/home position, we would run the following command:
 `rostopic pub -1 /lynxmotion_al5d/joints_positions/command std_msgs/Float64MultiArray "data: [0, 1.57,-1.57, 0, 0, 0.03175]"`
 
