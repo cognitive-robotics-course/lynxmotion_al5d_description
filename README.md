@@ -57,6 +57,7 @@ After successful installation of the packages and dependencies listed above, you
 
  from your terminal. This will open up a Gazebo with the robot spawned at the center of an empty world as seen on the image below.
 
+
 ![Lynxmotion AL5D spawned in an empty Gazebo simulation world](screenshots/robot_in_gazebo.png?raw=true "Overview of the simulated robot in Gazebo")
 
 Beside opening the Gazebo window, issuing the previous command also creates a set of ROS topics for the joints and also the external camera added to the robot model. You can view the topics by running the following command in a terminal.
