@@ -6,13 +6,11 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1
         - /RobotModel1/Links1
-        - /RobotModel1/Links1/arm1
-        - /RobotModel1/Links1/gripper1
         - /RobotModel1/Links1/left_finger1
-        - /RobotModel1/Links1/right_finger1
-        - /RobotModel1/Links1/shoulder1
-        - /RobotModel1/Links1/wrist1
+        - /TF1
+        - /TF1/Tree1
       Splitter Ratio: 0.585014403
     Tree Height: 652
   - Class: rviz/Selection
@@ -82,6 +80,11 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        gripper_mov:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_finger:
           Alpha: 1
           Show Axes: false
@@ -112,6 +115,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         wrist:
           Alpha: 1
           Show Axes: false
@@ -123,11 +130,64 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        arm:
+          Value: true
+        camera_link:
+          Value: true
+        gripper:
+          Value: true
+        gripper_mov:
+          Value: true
+        left_finger:
+          Value: true
+        right_finger:
+          Value: true
+        robot_base_cylinder:
+          Value: true
+        robot_base_top_box:
+          Value: true
+        robot_support:
+          Value: true
+        shoulder:
+          Value: true
+        world:
+          Value: true
+        wrist:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: false
+      Show Axes: false
+      Show Names: false
+      Tree:
+        world:
+          camera_link:
+            {}
+          robot_support:
+            robot_base_cylinder:
+              robot_base_top_box:
+                shoulder:
+                  arm:
+                    wrist:
+                      gripper:
+                        gripper_mov:
+                          {}
+                        left_finger:
+                          {}
+                        right_finger:
+                          {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 23; 0; 119
     Default Light: true
-    Fixed Frame: robot_support
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -148,7 +208,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.99443543
+      Distance: 0.798649251
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -163,10 +223,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.419799149
+      Pitch: 0.404797316
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.0136692617
+      Yaw: 6.23357248
     Saved: ~
 Window Geometry:
   Displays:

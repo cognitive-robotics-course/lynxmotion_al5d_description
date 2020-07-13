@@ -1,0 +1,132 @@
+<?xml version="1.0" ?>
+
+
+<robot name="table" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <material name="brown">
+        <color rgba="${91.0/255} ${63.0/255} ${54.0/255}" />
+    </material>
+    
+    <xacro:property name="support_size1" value="0.05" />
+    <xacro:property name="support_depth" value="0.5" />
+    <xacro:property name="top_width" value="2" />
+    <xacro:property name="top_height" value="1.2" />
+    <xacro:property name="top_depth" value="0.04" />
+
+    <xacro:macro name="inertial_matrix" params="mass height width depth">
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="${(depth*depth + height*height)*mass/12}" ixy="0.0" ixz="0.0" iyy="${(width*width + depth*depth)*mass/12}" iyz="0.0" izz="${(width*width + height*height)*mass/12}" />
+        </inertial>
+    </xacro:macro>
+
+    <link name="table_link" />
+    <link name="table_support_1">
+        <visual>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${top_width/2 + support_size1/2} ${top_height/2} ${support_depth/2}" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_size1}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${top_width/2 + support_size1/2} ${top_height/2} ${support_depth/2}" />
+        </collision>
+        <xacro:inertial_matrix mass="0.3" width="${support_size1}" height="${support_size1}" depth="${support_depth}" />
+    </link>
+    <joint name="joint1" type="fixed">
+        <parent link="table_link" />
+        <child link="table_support_1" />
+    </joint>
+    
+    <link name="table_support_2">
+        <visual>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${top_width/2 + support_size1/2} ${-top_height/2} ${support_depth/2}" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${top_width/2 + support_size1/2} ${-top_height/2} ${support_depth/2}" />
+        </collision>
+        <xacro:inertial_matrix mass="0.3" width="${support_size1}" height="${support_size1}" depth="${support_depth}" />
+    </link>
+    <joint name="joint2" type="fixed">
+        <parent link="table_link" />
+        <child link="table_support_2" />
+    </joint>
+
+    <link name="table_support_3">
+        <visual>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${-top_width/2 - support_size1/2} ${top_height/2} ${support_depth/2}" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_size1}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${-top_width/2 - support_size1/2} ${top_height/2} ${support_depth/2}" />
+        </collision>
+        <xacro:inertial_matrix mass="0.3" width="${support_size1}" height="${support_size1}" depth="${support_depth}" />
+    </link>
+    <joint name="joint3" type="fixed">
+        <parent link="table_link" />
+        <child link="table_support_3" />
+    </joint>
+
+    <link name="table_support_4">
+        <visual>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${-top_width/2 - support_size1/2} ${-top_height/2} ${support_depth/2}" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${support_size1} ${support_size1} ${support_size1}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="${top_width/2 + support_size1/2} ${top_height/2} ${support_depth/2}" />
+        </collision>
+        <xacro:inertial_matrix mass="0.3" width="${support_size1}" height="${support_size1}" depth="${support_depth}" />
+    </link>
+    <joint name="joint4" type="fixed" >
+        <parent link="table_link" />
+        <child link="table_support_4" />
+    </joint>
+
+    <link name="table_top">
+        <visual>
+            <geometry>
+                <box size="${top_width + 0.3} ${top_height + 0.3} ${top_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="0 0 ${support_depth}" />
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${top_width + 0.3} ${top_height + 0.3} ${top_depth}" />
+            </geometry>
+            <material name="brown" />
+            <origin rpy="0 0 0" xyz="0 0 ${support_depth}" />
+        </collision>
+        <xacro:inertial_matrix mass="1" width="${top_width + 0.3}" height="${top_height + 0.3}" depth="${top_depth}" />
+    </link>
+    <joint name="top_joint" type="fixed">
+        <parent link="table_link" />
+        <child link="table_top" />
+    </joint>
+</robot>
