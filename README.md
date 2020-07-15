@@ -98,6 +98,6 @@ To view the images captured by the external vision sensor added to the model. ru
 
 `rosrun image_view image_view image:=/lynxmotion_al5d/al5d_external_vision/image_raw`
 
-This will open an image\_view screen with the image getting updated every half of a second.
+This will open an image\_view screen with the image getting updated every half of a second. Below is an image captured using the sensor while the robot was in the (0, 0, 0, 0, 0, 0) position.
 
 ![Visualization of the image captured by the camera sensor](screenshots/image_view.png?raw=true "Image captured by the camera sensor linked to the simulator")
