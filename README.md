@@ -41,13 +41,27 @@ sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinet
 
 `sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
 
+`sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'`
+
+```bash
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install gazebo7 -y
+```
+
 The Gazebo simulation also has a dependency on the [mimic joints plugin from roboticsgroup](https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins). To install the dependency, run the following command.
 
 ```bash
 roscd
+
 cd ../src
+
 git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+
 cd ..
+
 catkin_make
 ```
 
