@@ -169,7 +169,7 @@
             <geometry>
                 <box size="0.01 0.01 0.01" />
             </geometry>
-            <material name="Transparent" />
+            <material name="transparent">Gazebo/GreyTransparent</material>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
@@ -187,14 +187,13 @@
                 <box size="0.01 0.01 0.01" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
-            <material name="Transparent" />
+            <material name="transparent">Gazebo/GreyTransparent</material>
         </visual>
         <collision>
             <geometry>
                 <box size="0.01 0.01 0.01" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
-            <material name="Transparent" />
         </collision>
         <xacro:inertial_matrix_bis mass="0.05" />
     </link>
