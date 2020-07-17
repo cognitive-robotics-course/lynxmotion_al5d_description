@@ -326,7 +326,7 @@
         <sensor name="external_camera" type="camera">
             <update_rate>1.0</update_rate>
             <camera name="camera_top">
-                <horizontal_fov>1.6</horizontal_fov>
+                <horizontal_fov>1.2</horizontal_fov>
                 <pose>0 0 0 3.1415 1.5708 1.5708</pose>
                 <image>
                     <width>640</width>
@@ -334,7 +334,7 @@
                     <format>R8G8B8</format>
                 </image>
                 <clip>
-                    <near>0.1</near>
+                    <near>0.01</near>
                     <far>0.3</far>
                 </clip>
             </camera>

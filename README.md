@@ -36,12 +36,12 @@ sudo apt update
 `
 
 `
-sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs
+sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs libignition-math2-dev
 `
 
 `sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
 
-`sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable ``lsb_release -cs`` main" > /etc/apt/sources.list.d/gazebo-stable.list'`
+`sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable \`lsb_release -cs\` main" > /etc/apt/sources.list.d/gazebo-stable.list'`
 
 ```bash
 wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -

@@ -13,8 +13,6 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
-
-    <pose>0 0 0 0 0 3.1415</pose>
     <model name='ground_plane'>
       <static>1</static>
       <link name='link'>
