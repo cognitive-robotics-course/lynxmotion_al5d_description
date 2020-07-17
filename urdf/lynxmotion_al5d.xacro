@@ -184,28 +184,19 @@
     <link name="camera_link">
         <visual>
             <geometry>
-                <box size="0.01 0.01 0.01" />
+                <box size="0.0001 0.0001 0.0001" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <material name="transparent">Gazebo/GreyTransparent</material>
         </visual>
         <collision>
             <geometry>
-                <box size="0.01 0.01 0.01" />
+                <box size="0.0001 0.0001 0.0001" />
             </geometry>
             <origin rpy="0 0 0" xyz="0 0 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.05" />
+        <xacro:inertial_matrix_bis mass="0.0005" />
     </link>
-    <gazebo reference="camera_link" />
-
-    <sensor name="robot_camera" update_rate="1">
-        <parent link="camera_link" />
-        <origin xyz="0.005 0.005 0.005" rpy="0 0 0" />
-        <camera>
-            <image width="640" height="480" hfov="${PI/2}" format="RGB8" near="${camera_support_depth}" far="${camera_support_depth}" />
-        </camera>
-    </sensor> 
 
     <!-- Adding joints -->
     <joint name="world_to_robot" type="fixed">
@@ -217,7 +208,7 @@
     <joint name="camera_joint" type="fixed">
         <parent link="world" />
         <child link="camera_link" />
-        <origin xyz="0 ${-tube_length - hs_645_depth - gripper_base_height - 0.12} ${camera_support_depth}" />
+        <origin xyz="0 -0.17 ${camera_support_depth}" />
     </joint>
 
    <joint name="Joint1" type="revolute">
@@ -335,6 +326,7 @@
         <sensor name="external_camera" type="camera">
             <update_rate>1.0</update_rate>
             <camera name="camera_top">
+                <horizontal_fov>1.6</horizontal_fov>
                 <pose>0 0 0 3.1415 1.5708 1.5708</pose>
                 <image>
                     <width>640</width>
