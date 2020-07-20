@@ -21,17 +21,22 @@
     </include>    
 
     <!-- Load the URDF into the ROS Parameter Server -->   
-    <param name="robot_description" command="$(find xacro)/xacro --inorder  '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" />      
+    <param name="robot_description" command="$(find xacro)/xacro --inorder  
+        '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" />      
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->   
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-param robot_description -urdf -model lynxmotion_al5d -J lynxmotion_al5d::Joint1 0 -J lynxmotion_al5d::Joint2 1.57 -J lynxmotion_al5d::Joint3 -1.57 lynxmotion_al5d::Joint4 0 -J lynxmotion_al5d::Joint5 0 -J lynxmotion_al5d::Gripper 0.03175  -unpause"/>  
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" 
+            args="-param robot_description -urdf -model lynxmotion_al5d 
+                    -J lynxmotion_al5d::Joint1 0 -J lynxmotion_al5d::Joint2 1.57 
+                    -J lynxmotion_al5d::Joint3 -1.57 lynxmotion_al5d::Joint4 0 
+                    -J lynxmotion_al5d::Joint5 0 -J lynxmotion_al5d::Gripper 0.03175  
+                    -unpause"/>  
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find lynxmotion_al5d_description)/config/robot_control.yaml" />
 
     <!-- Load the controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/lynxmotion_al5d" args="joint_state_controller 
-        joints_positions" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/lynxmotion_al5d" args="joints_positions" />
 
     <!-- Convert joint states to TF transforms for Rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
