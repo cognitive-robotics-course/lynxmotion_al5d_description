@@ -217,14 +217,14 @@
         <child link="robot_base_cylinder" />
         <axis xyz="0 0 -1" />
         <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
-        <limit effort="100" velocity="2" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="50" friction="1" />
+        <limit effort="100" velocity="5" lower="${-PI}" upper="${PI}" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
     <joint name="base_to_cylinder" type="fixed">
         <parent link="robot_base_cylinder" />
         <child link="robot_base_top_box" />
-        <dynamics damping="50" friction="0.7" />
+        <dynamics damping="20" friction="0.7" />
     </joint>
  
     <joint name="Joint2" type="revolute">
@@ -232,8 +232,8 @@
         <child link="shoulder" />
         <axis xyz="1 0 0"/>
         <origin xyz="0 0.015 0.071"  rpy="0 0 0" />
-        <limit effort="100" velocity="2" lower="0" upper="${PI}" />
-        <dynamics damping="50" friction="1" />
+        <limit effort="100" velocity="5" lower="0" upper="${PI}" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
     <joint name="Joint3" type="revolute">
@@ -241,7 +241,7 @@
         <child link="arm" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${shoulder_to_elbow} 0" />
-        <limit effort="100" velocity="2" lower="${-PI/2}" upper="${PI/2}" />
+        <limit effort="100" velocity="5" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="20" friction="1" />
     </joint>
 
@@ -259,8 +259,8 @@
         <child link="gripper" />
         <axis xyz="0 1 0" />
         <origin xyz="0 0.04 0" rpy="0 0 ${PI}" />
-        <limit effort="100" velocity="2" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="50" friction="0.7" />
+        <limit effort="100" velocity="5" lower="${-PI}" upper="${PI}" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
     <joint name="right_finger_joint" type="prismatic">
@@ -308,18 +308,11 @@
 
     <!-- Setting the mimic joints plugin -->
     <xacro:mimic_joint_plugin_gazebo name_prefix="finger_right"
-    parent_joint="Gripper" mimic_joint="right_finger_joint" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
+    parent_joint="Gripper" mimic_joint="right_finger_joint" multiplier="-0.5" 
+        has_pid="true" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
     <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left"
-    parent_joint="Gripper" mimic_joint="left_finger_joint" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
-
-    <sensor name="camera">
-        <parent link="camera_link" />
-        <origin xyz="0 0 0" rpy="${PI/2} 0 0" />
-        <camera>
-            <image width="640" height="480" hfov="1.41" near="0.01" far="0.04" />
-        </camera>
-    </sensor>
+    parent_joint="Gripper" has_pid="true"  mimic_joint="left_finger_joint" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
     <gazebo reference="camera_link">
         <sensor name="external_camera" type="camera">
@@ -342,7 +335,7 @@
                 <robotNamespace>/lynxmotion_al5d</robotNamespace>
                 <alwaysOn>true</alwaysOn>
                 <updateRate>1.0</updateRate>
-                <cameraName>al5d_external_vision</cameraName>
+                <cameraName>external_vision</cameraName>
                 <imageTopicName>image_raw</imageTopicName>
                 <cameraInfoTopicName>camera_info</cameraInfoTopicName>
                 <frameName>camera_link</frameName>

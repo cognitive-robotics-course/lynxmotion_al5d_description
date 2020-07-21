@@ -1,9 +1,18 @@
+
 # Lynxmotion AL5D simulator
 This package exposes a simulated version of the Lynxmotion AL5D arm robot. The robot model developed reproduces the physical properties of the robot as well as the kinematics. As it is, it can be used in any physics engine or visualization tool. For the purpose of conciseness, the current package only exposes the use of the simulator in [Rviz](https://github.com/ros-visualization/rviz) and in [Gazebo](http://gazebosim.org).
 
 ![Overview of the simulated robot in Rviz](screenshots/rviz.png?raw=true "Overview of the simulated robot in Rviz")
 
 # Usage
+
++ [Visualization in Rviz](#visualization-in-rviz)
++ [Running the simulation in Gazebo](#running-the-simulation-in-gazebo)
++ [Sending joint values to the Gazebo simulator](sending-joint-values-to-the-gazebo-simulator)
++ [Sending joint values to the Gazebo simulator](sending-joint-values-to-the-gazebo-simulator)
++ [Accessing the joint states](accessing-the-joint-states)
++ [Accessing the vision sensor](#accessing-the-vision-sensor)
++ [Spawning Lego Blocks](#spawning-lego-blocks)
 
 ## Visualization in Rviz
 
@@ -41,7 +50,7 @@ sudo apt install ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinet
 
 `sudo apt install ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
 
-`sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable \`lsb_release -cs\` main" > /etc/apt/sources.list.d/gazebo-stable.list'`
+`sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable ``lsb_release -cs`` main" > /etc/apt/sources.list.d/gazebo-stable.list'`
 
 ```bash
 wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
@@ -110,8 +119,12 @@ The `joint_states` publisher publishes the robot joint states at a rate of 50Hz 
 ### Accessing the vision sensor
 To view the images captured by the external vision sensor added to the model. run the following command from a terminal. (The camera is represented by a transparent cube in the simulation world)
 
-`rosrun image_view image_view image:=/lynxmotion_al5d/al5d_external_vision/image_raw`
+`rosrun rqt_image_view rqt_image_view`
 
-This will open an image\_view screen with the image getting updated every half of a second. Below is an image captured using the sensor while the robot was in the (0, 0, 0, 0, 0, 0) position.
+In the window that appears, select the topic `/lynxmotion_al5d/external_vision/image_raw` in the dropdown to visualize the images captured by the robot. The image captured by the camera when the robot is in the  (0, 0, 0, 0, 0, 0) position is displayed below.
 
-![Visualization of the image captured by the camera sensor](screenshots/image_view.png?raw=true "Image captured by the camera sensor linked to the simulator")
+![Visualization of the image captured by the camera sensor](screenshots/rqt_image_view.png?raw=true "Image captured by the camera sensor linked to the simulator")
+
+### Spawning Lego blocks
+
+For the purpose of experinmentation, a set of [lego blocks](https://www.lego.com/en-us/vip/vippromotions.jsp) has been created to run various exercises using the robot model. Three colors of blocks have been set up (Blue, Red and Green) and integrated to the package. In order to spawn them, you should go to the **Insert** menu in Gazebo and you would see the three blocks under the name of the package in your ROS package. Click on the block that you want to insert and drop it in the workspace by clicking at the position you want to insert it to. You can also adjust the position using the pose values in Gazebo.
