@@ -1,15 +1,14 @@
-/gazebo_ros_control:
-    pid_gains:
-    #   Pid values removed for more stable movement
-        Joint1: {p: 100.0, i: 0.01, d: 10.0}
-        Joint2: {p: 100.0, i: 0.01, d: 10.0}
-        Joint3: {p: 100.0, i: 0.01, d: 10.0}
-        Joint4: {p: 100.0, i: 0.01, d: 10.0}
-        Joint5: {p: 100.0, i: 0.01, d: 10.0}
-        Gripper: {p: 100.0, i: 0.01, d: 1.0, i_clamp: 0.2, antiwindup: false, publish_state: true}
-        # the following gains are used by the gazebo_mimic_joint plugin
-        right_finger_joint: {p: 100.0, i: 0, d: 1.0, i_clamp: 0.2, antiwindup: false, publish_state: true}
-        left_finger_joint: {p: 100.0, i: 0.1, d: 1.0, i_clamp: 0.2, antiwindup: false, publish_state: true}
+#/gazebo_ros_control:
+    #pid_gains:
+    #   Joint1: {p: 30.0, i: 0.01, d: 5.0}
+    #   Joint2: {p: 40.0, i: 0.01, d: 10.0}
+    #   Joint3: {p: 40.0, i: 0.01, d: 10.0}
+    #   Joint4: {p: 40.0, i: 0, d: 10.0}
+    #   Joint5: {p: 100.0, i: 0.01, d: 10.0}
+    #   Gripper: {p: 100.0, i: 0.01, d: 10.0, i_clamp: 0.2, antiwindup: false, publish_state: true}
+    #   # the following gains are used by the gazebo_mimic_joint plugin
+    #   right_finger_joint: {p: 100.0, i: 0, d: 1.0, i_clamp: 0.2, antiwindup: false, publish_state: true}
+    #   left_finger_joint: {p: 100.0, i: 0.1, d: 1.0, i_clamp: 0.2, antiwindup: false, publish_state: true}
 
 lynxmotion_al5d:
     # Publish all joint states -----------------------------------

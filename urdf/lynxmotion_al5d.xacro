@@ -242,7 +242,7 @@
         <axis xyz="1 0 0" />
         <origin xyz="0 ${shoulder_to_elbow} 0" />
         <limit effort="100" velocity="2" lower="${-PI/2}" upper="${PI/2}" />
-        <dynamics damping="50" friction="1" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
     <joint name="Joint4" type="revolute">
@@ -250,8 +250,8 @@
         <child link="wrist" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0.005" rpy="0 0 0"/>
-        <limit effort="40" velocity="2" lower="${-PI/2}" upper="${PI/2}" />
-        <dynamics damping="50" friction="1" />
+        <limit effort="40" velocity="5" lower="${-PI/2}" upper="${PI/2}" />
+        <dynamics damping="20" friction="1" />
     </joint>
 
    <joint name="Joint5" type="revolute">
@@ -308,12 +308,10 @@
 
     <!-- Setting the mimic joints plugin -->
     <xacro:mimic_joint_plugin_gazebo name_prefix="finger_right"
-    parent_joint="Gripper" mimic_joint="right_finger_joint"
-    has_pid="true" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
+    parent_joint="Gripper" mimic_joint="right_finger_joint" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
     <xacro:mimic_joint_plugin_gazebo name_prefix="finger_left"
-    parent_joint="Gripper" mimic_joint="left_finger_joint"
-    has_pid="true" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
+    parent_joint="Gripper" mimic_joint="left_finger_joint" multiplier="-0.5" max_effort="10.0" offset="${gripper_base_width/2}" /> 
 
     <sensor name="camera">
         <parent link="camera_link" />
