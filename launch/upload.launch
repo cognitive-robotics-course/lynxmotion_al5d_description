@@ -1,0 +1,9 @@
+
+<launch>
+    <!-- Uploading the robot xacro and the lego bricks on the rosparam server-->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro" />
+    
+    <param name="blue_lego_description" textfile="$(find lynxmotion_al5d_tutorials)/models/Blue_Lego_Brick/model.sdf" />
+    <param name="green_lego_description" textfile="$(find lynxmotion_al5d_tutorials)/models/Green_Lego_Brick/model.sdf" />
+    <param name="red_lego_description" textfile="$(find lynxmotion_al5d_tutorials)/models/Red_Lego_Brick/model.sdf" />
+</launch>

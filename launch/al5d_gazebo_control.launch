@@ -21,8 +21,11 @@
     </include>    
 
     <!-- Load the URDF into the ROS Parameter Server -->   
-    <param name="robot_description" command="$(find xacro)/xacro --inorder  
-        '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" />      
+    <!--<param name="robot_description" command="$(find xacro)/xacro \-\-inorder  
+        '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" /> -->   
+
+    <!-- Continues the logic in upload.launch-->  
+    <include file="$(find lynxmotion_al5d_description)/launch/upload.launch" />
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->   
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" 
@@ -32,6 +35,7 @@
                     -J lynxmotion_al5d::Joint5 0 -J lynxmotion_al5d::Gripper 0.03175  
                     -unpause"/>  
 
+    <node name="brick_spawner" pkg="lynxmotion_al5d_tutorials" type="spawn_brick_server" />
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find lynxmotion_al5d_description)/config/robot_control.yaml" />
 

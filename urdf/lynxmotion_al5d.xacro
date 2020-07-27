@@ -269,6 +269,7 @@
         <origin xyz="0 -0.015 0" />
         <limit effort="10" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
+        <dynamics friction="0.7" />
     </joint> 
 
    <joint name="left_finger_joint" type="prismatic">
@@ -278,6 +279,7 @@
         <axis xyz="-1 0 0" />
         <limit effort="10" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="right_finger_joint" />
+        <dynamics friction="0" />
     </joint>
 
     <!-- Joint that accept the distance between the two fingers as parameter -->
@@ -287,6 +289,7 @@
         <origin xyz="0.01 0  0" />
         <limit lower="0" upper="${gripper_base_width}" effort="10" velocity="0.1" />
         <axis xyz="-1 0 0" />
+        <dynamics friction="0.7" />
     </joint>
     
     <!-- Setting transmissions -->
@@ -319,7 +322,7 @@
             <update_rate>1.0</update_rate>
             <camera name="camera_top">
                 <horizontal_fov>1.2</horizontal_fov>
-                <pose>0 0 0 3.1415 1.5708 1.5708</pose>
+                <pose>0 0 0 3.1415 1.5708 -1.5708</pose>
                 <image>
                     <width>640</width>
                     <height>480</height>
