@@ -35,7 +35,7 @@
                     -J lynxmotion_al5d::Joint5 0 -J lynxmotion_al5d::Gripper 0.03175  
                     -unpause"/>  
 
-    <node name="brick_spawner" pkg="lynxmotion_al5d_tutorials" type="spawn_brick_server" />
+    <node name="sim_manager" pkg="lynxmotion_al5d_tutorials" type="manager_node" />
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find lynxmotion_al5d_description)/config/robot_control.yaml" />
 
