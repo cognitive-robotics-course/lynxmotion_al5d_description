@@ -10,8 +10,6 @@
     <arg name="server_required" default="true" />
     <arg name="gui_required" default="true" />
     
-
-    
     <!-- We resume the logic in empty_world.launch -->   
     <include file="$(find gazebo_ros)/launch/empty_world.launch">     
         <arg name="paused" value="$(arg paused)" /> 
@@ -19,10 +17,6 @@
         <arg name="server_required" default="$(arg server_required)" />
         <arg name="gui_required" default="$(arg server_required)" />
     </include>    
-
-    <!-- Load the URDF into the ROS Parameter Server -->   
-    <!--<param name="robot_description" command="$(find xacro)/xacro \-\-inorder  
-        '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" /> -->   
 
     <!-- Continues the logic in upload.launch-->  
     <include file="$(find lynxmotion_al5d_description)/launch/upload.launch" />
