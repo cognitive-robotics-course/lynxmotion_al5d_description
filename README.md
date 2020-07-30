@@ -127,4 +127,6 @@ In the window that appears, select the topic `/lynxmotion_al5d/external_vision/i
 
 ### Spawning Lego blocks
 
-For the purpose of experinmentation, a set of [lego bricks](https://www.lego.com/en-us/vip/vippromotions.jsp) has been created to run various exercises using the robot model. Three colors of bricks have been set up (Blue, Red and Green) and integrated to the package. In order to spawn them, you should go to the **Insert** menu in Gazebo and you would see the three blocks under the name of the package in your ROS package. Click on the block that you want to insert and drop it in the workspace by clicking at the position you want to insert it to. You can also adjust the position using the pose values in Gazebo.
+For the purpose of experimentation, a set of [lego bricks](https://www.lego.com/en-us/vip/vippromotions.jsp) has been created to run various exercises using the robot model. Three colors of bricks have been set up (Blue, Red and Green) and integrated to the package. In order to spawn them, you should go to the **Insert** menu in Gazebo and you would see the three blocks under the name of the package in your ROS package. Click on the block that you want to insert and drop it in the workspace by clicking at the position you want to insert it to. You can also adjust the position using the pose values in Gazebo.
+
+An alternative and more convenient way has been integrated into a package that provides a service to spawn, move and delete bricks as needed. See more [here](https://github.com/CRAM-Team/lynxmotion_al5d_tutorials)
