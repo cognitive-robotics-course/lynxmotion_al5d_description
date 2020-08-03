@@ -1,0 +1,2 @@
+geometry_msgs/Point position
+lynxmotion_al5d_description/RPY orientation
