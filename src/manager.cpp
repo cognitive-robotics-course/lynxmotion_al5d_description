@@ -101,8 +101,8 @@ bool Manager::killBrick(lynxmotion_al5d_description::KillBrick::Request &req,
     return true;
 }
 
-bool Manager::clear(lynxmotion_al5d_description::Clear::Request &req,
-            lynxmotion_al5d_description::Clear::Response &res)
+bool Manager::clear(std_srvs::Empty::Request &req,
+            std_srvs::Empty::Response &res)
 {
     lynxmotion_al5d_description::KillBrick::Request b_req;
     lynxmotion_al5d_description::KillBrick::Response b_res;
@@ -120,11 +120,11 @@ bool Manager::clear(lynxmotion_al5d_description::Clear::Request &req,
     return true;
 }
 
-bool Manager::reset(lynxmotion_al5d_description::Reset::Request &req,
-            lynxmotion_al5d_description::Reset::Response &res)
+bool Manager::reset(std_srvs::Empty::Request &req,
+            std_srvs::Empty::Response &res)
 {
-    lynxmotion_al5d_description::Clear::Request b_req;
-    lynxmotion_al5d_description::Clear::Response b_res;
+    std_srvs::Empty::Request b_req;
+    std_srvs::Empty::Response b_res;
 
     // Call the clear method
     clear(b_req, b_res);

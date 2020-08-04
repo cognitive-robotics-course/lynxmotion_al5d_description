@@ -3,8 +3,7 @@
 #include <thread>
 #include <ros/ros.h>
 #include "lynxmotion_al5d_description/brick.h"
-#include "lynxmotion_al5d_description/Clear.h"
-#include "lynxmotion_al5d_description/Reset.h"
+#include "std_srvs/Empty.h"
 #include "lynxmotion_al5d_description/SpawnBrick.h"
 #include "lynxmotion_al5d_description/KillBrick.h"
 #include "gazebo_msgs/SpawnModel.h"
@@ -23,10 +22,10 @@ public:
                     lynxmotion_al5d_description::SpawnBrick::Response &res);
     bool killBrick(lynxmotion_al5d_description::KillBrick::Request &req,
                     lynxmotion_al5d_description::KillBrick::Response &res);
-    bool clear(lynxmotion_al5d_description::Clear::Request &req,
-                lynxmotion_al5d_description::Clear::Response &res);
-    bool reset(lynxmotion_al5d_description::Reset::Request &req,
-                lynxmotion_al5d_description::Reset::Response &res);
+    bool clear(std_srvs::Empty::Request &req,
+                std_srvs::Empty::Response &res);
+    bool reset(std_srvs::Empty::Request &req,
+                std_srvs::Empty::Response &res);
     int brickIndex(std::string name);
 private:
     std::vector<Brick*> bricks;

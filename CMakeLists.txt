@@ -33,8 +33,6 @@ add_service_files(
   KillBrick.srv
   TeleportAbsolute.srv
   TeleportRelative.srv
-  Clear.srv
-  Reset.srv
 )
 
 generate_messages(
