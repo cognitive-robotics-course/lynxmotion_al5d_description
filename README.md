@@ -76,45 +76,45 @@ Gripper: [0; 0.03175 metres]
 This part provides details to programmers on how to use the various tools available in the current package and extend them to their own needs. It discusses the services, published topics and subscribers available as part of the package.
 
 #### Subscribed topics
-`/lynxmotion_al5d/joints_positions/command` ([std\_msgs/Float64MultiArray](http://docs.ros.org/diamondback/api/std_msgs/html/msg/Float64MultiArray.html))
++ `/lynxmotion_al5d/joints_positions/command` ([std\_msgs/Float64MultiArray](http://docs.ros.org/diamondback/api/std_msgs/html/msg/Float64MultiArray.html))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The joints positions specification for the Lynxmotion AL5D simulator. Publishing values to this topic will make the robot to set the joint at the specified positions. The topic expects a set of 6 values with the first five values being the angles for the Joints 1 to 5, the last one representing the distance between the two fingers of the robot gripper.
 
 #### Published topics
-`/lynxmotion_al5d/joint_states` ([sensor\_msgs/JointState](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/JointState.html))
++ `/lynxmotion_al5d/joint_states` ([sensor\_msgs/JointState](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/JointState.html))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns the state of the 6 joints of the robot at a frequency of 50 Hz. JointSate.name represents the array of the names of the joints and JointState.position represents the current position of the joints.
 
-`/lynxmotion_al5d/external_vision/image_raw` ([sensor\_msgs/Image](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/Image.html))
++ `/lynxmotion_al5d/external_vision/image_raw` ([sensor\_msgs/Image](http://docs.ros.org/melodic/api/sensor_msgs/html/msg/Image.html))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns in the `data` field, the matrix corresponding to the image captured by the camera sensor attached to the robot.
 
-`/lynxmotion_al5d/<brick name>/pose` ([lynxmotion\_al5d\_description/Pose](msg/Pose.msg))
++ `/lynxmotion_al5d/<brick name>/pose` ([lynxmotion\_al5d\_description/Pose](msg/Pose.msg))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns the position (x, y, z) and orientation (roll, pitch, yaw) of the brick specified. Here, roll is a rotation around the x-axis, pitch around the y-axis and yaw around the z-axis. The values returned are in metres for the position and in radians for the angles of rotation.
 
 #### Services
-`/lynxmotion_al5d/clear` ([std\_srvs/Empty](http://docs.ros.org/api/std_srvs/html/srv/Empty.html))
++ `/lynxmotion_al5d/clear` ([std\_srvs/Empty](http://docs.ros.org/api/std_srvs/html/srv/Empty.html))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clears the workspace by removing all the spawned bricks. Also resets the count of bricks for which a name has been generated to allow the name starting by 0.
 
-`/lynxmotion_al5d/reset` ([std\_srvs/Empty](http://docs.ros.org/api/std_srvs/html/srv/Empty.html))
++ `/lynxmotion_al5d/reset` ([std\_srvs/Empty](http://docs.ros.org/api/std_srvs/html/srv/Empty.html))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Calls the `clear` service and sends the robot simulator to the home position `(0 pi/2 -pi/2 0 0 0.03)`
 
-`/lynxmotion_al5d/kill_brick` ([lynxmotion\_al5d\_description/KillBrick](srv/KillBrick.srv))
++ `/lynxmotion_al5d/kill_brick` ([lynxmotion\_al5d\_description/KillBrick](srv/KillBrick.srv))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Removes the brick with the specified name from the workspace. Returns a boolean with the status in the `KillBrick.result` field and a message in case an error occured in the `KillBrick.status_message` field.
 
-`/lynxmotion_al5d/spawn_brick` ([lynxmotion\_al5d\_description/SpawnBrick](srv/SpawnBrick.srv))
++ `/lynxmotion_al5d/spawn_brick` ([lynxmotion\_al5d\_description/SpawnBrick](srv/SpawnBrick.srv))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spawns a brick of the specified color at (x, y, z) with an orientation of (roll, pitch, yaw) - resp. rotations around the x, y and z axis. It will also optionally take the name of the brick and will fail in case there is a duplicate name. In the absence of a name, one is automatically generated in the format `brick<X>` with X being a number representing the next digit available to assign a brick.
 
-`/lynxmotion_al5d/<brick_name>/teleport_absolute` ([lynxmotion\_al5d\_description/TeleportAbsolute](srv/TeleportAbsolute.srv))
++ `/lynxmotion_al5d/<brick_name>/teleport_absolute` ([lynxmotion\_al5d\_description/TeleportAbsolute](srv/TeleportAbsolute.srv))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Teleports the brick named `brick_name` to the specified position and orientation.
 
-`/lynxmotion_al5d/<brick_name>/teleport_relative` ([lynxmotion\_al5d\_description/TeleportRelative](srv/TeleportRelative.srv))
++ `/lynxmotion_al5d/<brick_name>/teleport_relative` ([lynxmotion\_al5d\_description/TeleportRelative](srv/TeleportRelative.srv))
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Teleports the brick named `brick_name` by applying the specified movement from the current brick position.
 
