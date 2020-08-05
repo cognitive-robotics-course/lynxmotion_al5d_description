@@ -190,11 +190,11 @@ For example, the command `rostopic echo /lynxmotion_al5d/brick1/pose` will displ
 
 To spawn a brick a position (x, y, z) specified in metres from the center of the world and orientation (roll, pitch, yaw) specified in radians using the XYZ rotation convention (i.e roll, pitch and yaw are respectively rotations around the x, y and z axis), you should run the following command:
 
-`rosrun lynxmotion_al5d_tutorials spawn_brick -c <color> [-n <name> -x <x> -y <y> -z <z> -R <roll> -P <pitch> -Y <yaw>]`.
+`rosrun lynxmotion_al5d_description spawn_brick -c <color> [-n <name> -x <x> -y <y> -z <z> -R <roll> -P <pitch> -Y <yaw>]`.
 
 For example, the following command spawns a red brick in the middle of the camera's field of view (0, 0.170, 0) with no rotations.
 
-`rosrun lynxmotion_al5d_tutorials spawn_brick -c red -y 0.170`
+`rosrun lynxmotion_al5d_description spawn_brick -c red -y 0.170`
 
 Note: Only the color is a required parameter and the user can feel free to put the only values that are different than zero.
 
@@ -202,9 +202,9 @@ Note: Only the color is a required parameter and the user can feel free to put t
 
 For killing a brick that is in the workspace, the command to use is:
 
-`rosrun lynxmotion_al5d_tutorials kill_brick <brick name>`
+`rosrun lynxmotion_al5d_description kill_brick <brick name>`
 
-For instance, running `rosrun lynxmotion_al5d_tutorials kill_brick brick1` will remove brick1 from the workspace if it is present.
+For instance, running `rosrun lynxmotion_al5d_description kill_brick brick1` will remove brick1 from the workspace if it is present.
 
 #### Clear the workspace
 

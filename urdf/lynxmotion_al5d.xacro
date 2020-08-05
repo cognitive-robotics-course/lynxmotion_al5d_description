@@ -14,13 +14,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/support.dae" />
             </geometry>3
-            <origin rpy="0 0 0" xyz="0 0 0" />
+            <origin rpy="0 0 0" xyz="0 -0.01 0" />
         </visual>   
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/support.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 0 0" />
+            <origin rpy="0 0 0" xyz="0 -0.01 0" />
         </collision>   
         <xacro:inertial_matrix mass="${board_mass}" ixx="3.6565e-7" ixy="-3.72e-9" ixz="1e-6" iyy="9.404e-8" iyz="4.375e-8" izz="4.1776e-7" xyz="0.000585 0.0602746 0.0170628" />
     </link>
@@ -31,13 +31,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 -0.021165 0" />
+            <origin rpy="0 0 0" xyz="0 -0.011165 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 -0.021165 0" />
+            <origin rpy="0 0 0" xyz="0 -0.011165 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="${base_mass}" />
     </link>
@@ -48,13 +48,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="-0.01 0.01 0" rpy="0 0 ${PI}" />
+            <origin xyz="-0.01 0.03 0" rpy="0 0 ${PI}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.01 0.03 0" rpy="0 0 ${PI}" />
         </collision>
         <xacro:inertial_matrix_bis mass="${top_box_mass}" />
     </link>
@@ -231,7 +231,7 @@
         <parent link="robot_base_top_box" />
         <child link="shoulder" />
         <axis xyz="1 0 0"/>
-        <origin xyz="0 0.005 0.071"  rpy="0 0 0" />
+        <origin xyz="0 0.020 0.071"  rpy="0 0 0" />
         <limit effort="100" velocity="5" lower="0" upper="${PI}" />
         <dynamics damping="20" friction="0.8" />
     </joint>
