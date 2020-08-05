@@ -48,7 +48,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="0.007 -0.024 0" rpy="0 0 0" />
+            <origin xyz="-0.01 0.01 0" rpy="0 0 ${PI}" />
         </visual>
         <collision>
             <geometry>
@@ -231,7 +231,7 @@
         <parent link="robot_base_top_box" />
         <child link="shoulder" />
         <axis xyz="1 0 0"/>
-        <origin xyz="0 0.015 0.071"  rpy="0 0 0" />
+        <origin xyz="0 0.005 0.071"  rpy="0 0 0" />
         <limit effort="100" velocity="5" lower="0" upper="${PI}" />
         <dynamics damping="20" friction="0.8" />
     </joint>
