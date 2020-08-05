@@ -222,21 +222,21 @@ For resetting the workspace, the following command should be run from a terminal
 
 To move a specific robot to an absolute position, the command to be executed follows the format:
 
-`rosservice call /lynxmotion_al5d/<brick name>/teleport_absolute '{pose: {x: <x>,y: <y>, z: <z>, roll: <roll>, pitch: <pitch>, yaw: <yaw>}}'`
+`rosservice call /lynxmotion_al5d/<brick name>/teleport_absolute '{pose: {position: {x: <x>, y: <y>, z: <z>}, orientation: {roll: <roll>, pitch: <pitch>, yaw: <yaw>}}}'`
 
 For example, the following command moves the brick1 to the position (0 0.200 0) with a 90 degrees (~1.5708 radians) rotation around the z-axis
 
-`rosservice call /lynxmotion_al5d/brick1/teleport_absolute '{pose : {x: 0, y: 0.200, z: 0, roll: 0, pitch: 0, yaw: 1.5708}}'`
+`rosservice call /lynxmotion_al5d/brick1/teleport_absolute '{pose: {position: {x: 0, y: 0.2, z: 0}, orientation: {roll: 0, pitch: 0, yaw: 1.5708}}}'`
 
 #### Move to a relative pose
 
 To move a specific robot to an relative position, the command to be executed follows the format:
 
-`rosservice call /lynxmotion_al5d/<brick name>/teleport_relative '{pose: {x: <x>,y: <y>, z: <z>, roll: <roll>, pitch: <pitch>, yaw: <yaw>}}'`
+`rosservice call /lynxmotion_al5d/<brick name>/teleport_relative '{pose: {position: {x: <x>, y: <y>, z: <z>}, orientation: {roll: <roll>, pitch: <pitch>, yaw: <yaw>}}}'`
 
 For example, the following command moves the `brick1` 200 millimetres (0.2 metres) away from its current position and applies a 90 degrees (~ 1.5708 radians) rotation around the z-axis as well. 
 
-`rosservice call /lynxmotion_al5d/brick1/teleport_relative '{pose : {x: 0, y: 0.200, z: 0, roll: 0, pitch: 0, yaw: 1.5708}}'`
+`rosservice call /lynxmotion_al5d/brick1/teleport_relative '{pose: {position: {x: 0.2, y: 0, z: 0}, orientation: {roll: 0, pitch: 0, yaw: 1.5708}}}'`
 
 ### How to get additional help
 
