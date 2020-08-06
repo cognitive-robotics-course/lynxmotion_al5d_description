@@ -241,7 +241,7 @@
         <child link="arm" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${shoulder_to_elbow} 0" />
-        <limit effort="100" velocity="5" lower="${-PI/2}" upper="${PI/2}" />
+        <limit effort="100" velocity="5" lower="${-PI}" upper="0" />
         <dynamics damping="20" friction="0.8" />
     </joint>
 
