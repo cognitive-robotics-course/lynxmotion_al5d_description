@@ -20,8 +20,8 @@ See below the two (at the left side, the physical robotic arm, at the right side
     3. [Setting joint positions](#setting-joint-positions)
     4. [Accessing the joint states](#accessing-the-joint-states)
     5. [Accessing the captured image](#accessing-the-captured-image)
-    6. [Accessing the pose of a brick](#accessing-the-pose-of-a-brick)
-    7. [Spawning bricks](#spawning-bricks)
+    6. [Spawning bricks](#spawning-bricks)
+    7. [Accessing the pose of a brick](#accessing-the-pose-of-a-brick)
     8. [Killing bricks](#killing-bricks)
     9. [Clear the workspace](#clearing-the-workspace)
     10. [Reset the workspace](#reset-the-workspace)
@@ -178,14 +178,6 @@ In the window that appears, select the topic `/lynxmotion_al5d/external_vision/i
 
 ![Visualization of the image captured by the camera sensor](screenshots/rqt_image_view.png?raw=true "Image captured by the camera sensor linked to the simulator")
 
-#### Accessing the pose of a brick
-
-In order to get the pose of a particular brick, the syntax of the command to execute from a command line terminal is as below.
-
-`rostopic echo /lynxmotion_al5d/<brick name>/pose`
-
-For example, the command `rostopic echo /lynxmotion_al5d/brick1/pose` will display the position and orientation of brick1 if it exists.
-
 #### Spawning bricks
 
 To spawn a brick a position (x, y, z) specified in metres from the center of the world and orientation (roll, pitch, yaw) specified in radians using the XYZ rotation convention (i.e roll, pitch and yaw are respectively rotations around the x, y and z axis), you should run the following command:
@@ -196,7 +188,20 @@ For example, the following command spawns a red brick in the middle of the camer
 
 `rosrun lynxmotion_al5d_description spawn_brick -c red -y 0.170`
 
+This second example create a **blue** brick named `mybrick` at position (0.1, 0.1, 0.1) with no rotation.
+
+`rosrun lynxmotion_al5d_description spawn_brick -n mybrick -c red -x 0.1 -y 0.1 -z 0.1`
+
 Note: Only the color is a required parameter and the user can feel free to put the only values that are different than zero.
+
+#### Accessing the pose of a brick
+
+In order to get the pose of a particular brick, the syntax of the command to execute from a command line terminal is as below.
+
+`rostopic echo /lynxmotion_al5d/<brick name>/pose`
+
+For example, the command `rostopic echo /lynxmotion_al5d/brick1/pose` will display the position and orientation of brick1 if it exists.
+
 
 #### Killing bricks
 
