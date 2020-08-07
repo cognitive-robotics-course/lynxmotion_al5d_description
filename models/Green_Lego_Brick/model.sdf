@@ -312,22 +312,24 @@
           </box>
         </geometry>
         <surface>
-          <friction>
+          <contact>
+            <!-- Red Pine coefficients for longitudinal axis of the wood
+                 according to:
+                 http://www.fpl.fs.fed.us/documnts/fplgtr/fplgtr113/ch04.pdf -->
+            <poissons_ratio>0.347</poissons_ratio>
+            <elastic_modulus>8.8e+09</elastic_modulus>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
-              <fdir1>0 0 0</fdir1>
-              <slip1>0</slip1>
-              <slip2>0</slip2>
+              <kp>100000</kp>
+              <kd>100</kd>
+              <max_vel>100.0</max_vel>
+              <min_depth>0.001</min_depth>
             </ode>
+          </contact>
+          <friction>
             <torsional>
-              <coefficient>1</coefficient>
-              <patch_radius>0</patch_radius>
-              <surface_radius>0</surface_radius>
-              <use_patch_radius>1</use_patch_radius>
-              <ode>
-                <slip>0</slip>
-              </ode>
+              <coefficient>1.0</coefficient>
+              <use_patch_radius>0</use_patch_radius>
+              <surface_radius>0.01</surface_radius>
             </torsional>
           </friction>
         </surface>
