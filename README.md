@@ -66,7 +66,7 @@ The range of the values acceptable by the joints are as follows:
 ```markdown
 Joint1: [-pi; pi]
 Joint2: [0; pi]
-Joint3: [-pi/2; pi/2]
+Joint3: [-pi; 0]
 Joint4: [-pi/2; pi/2]
 Joint5: [-pi; pi]
 Gripper: [0; 0.03175 metres]
