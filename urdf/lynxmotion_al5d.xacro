@@ -203,7 +203,7 @@
         <parent link="world" />
         <child link="robot_support" />
         <origin rpy="0 0 ${PI}" />
-        <dynamics damping="50" friction="0.8" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
     <joint name="camera_joint" type="fixed">
@@ -218,13 +218,13 @@
         <axis xyz="0 0 -1" />
         <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
         <limit effort="100" velocity="5" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="20" friction="0.8" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
     <joint name="base_to_cylinder" type="fixed">
         <parent link="robot_base_cylinder" />
         <child link="robot_base_top_box" />
-        <dynamics damping="20" friction="0.7" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
  
     <joint name="Joint2" type="revolute">
@@ -233,7 +233,7 @@
         <axis xyz="1 0 0"/>
         <origin xyz="0 0.020 0.071"  rpy="0 0 0" />
         <limit effort="100" velocity="5" lower="0" upper="${PI}" />
-        <dynamics damping="20" friction="0.8" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
     <joint name="Joint3" type="revolute">
@@ -242,7 +242,7 @@
         <axis xyz="1 0 0" />
         <origin xyz="0 ${shoulder_to_elbow} 0" />
         <limit effort="100" velocity="5" lower="${-PI}" upper="0" />
-        <dynamics damping="20" friction="0.8" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
     <joint name="Joint4" type="revolute">
@@ -251,7 +251,7 @@
         <axis xyz="1 0 0" />
         <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0.005" rpy="0 0 0"/>
         <limit effort="40" velocity="5" lower="${-PI/2}" upper="${PI/2}" />
-        <dynamics damping="20" friction="0.8" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
    <joint name="Joint5" type="revolute">
@@ -260,7 +260,7 @@
         <axis xyz="0 -1 0" />
         <origin xyz="0 0.04 0" rpy="0 0 ${PI}" />
         <limit effort="100" velocity="5" lower="${-PI}" upper="${PI}" />
-        <dynamics damping="20" friction="0.8" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
     <joint name="right_finger_joint" type="prismatic">
