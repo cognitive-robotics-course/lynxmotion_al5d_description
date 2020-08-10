@@ -5,6 +5,7 @@ int Manager::numSpawned;
 Manager::Manager(ros::NodeHandle& nh_)
 {
     nh = nh_;
+    pub_joints = nh.advertise<std_msgs::Float64MultiArray>("/lynxmotion_al5d/joints_positions/command", 1000);
 }
 
 int Manager::brickIndex(std::string name)
@@ -129,17 +130,18 @@ bool Manager::reset(std_srvs::Empty::Request &req,
     // Call the clear method
     clear(b_req, b_res);
 
-    // Now send the robot back to the (0 0 0 0 0 0) position
-    ros::Publisher pub = nh.advertise<std_msgs::Float64MultiArray>("/lynxmotion_al5d/joints_positions/command", 100);
-    while (pub.getNumSubscribers() < 1)
-    {
-        // Wait until there is connection.
-    }
     std_msgs::Float64MultiArray msg;
     std::vector<double> vals = {0.00, 1.5700, -1.5700, 0.00, 0.00, 0.00};
     msg.data.clear();
     msg.data.insert(msg.data.end(), vals.begin(), vals.end());
-    pub.publish(msg);
+
+    // Now send the robot back to the (0 0 0 0 0 0) position
+    while (pub_joints.getNumSubscribers() < 1)
+    {
+        // Wait until there is connection.
+    }
+
+    pub_joints.publish(msg);
 
     return true;
 }

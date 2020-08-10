@@ -29,6 +29,7 @@ public:
     int brickIndex(std::string name);
 private:
     std::vector<Brick*> bricks;
+    ros::Publisher pub_joints;
     ros::NodeHandle nh;
 };
 
