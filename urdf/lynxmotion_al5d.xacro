@@ -31,13 +31,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 -0.011165 0" />
+            <origin rpy="0 0 0" xyz="0 -0.021 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/rotation_cylinder.dae" />
             </geometry>
-            <origin rpy="0 0 0" xyz="0 -0.011165 0" />
+            <origin rpy="0 0 0" xyz="0 -0.021 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="${base_mass}" />
     </link>
@@ -216,7 +216,7 @@
         <parent link="robot_support" />
         <child link="robot_base_cylinder" />
         <axis xyz="0 0 -1" />
-        <origin xyz="0 0.021 0" rpy="0 0 ${PI}" />
+        <origin xyz="0 0.01 0" rpy="0 0 ${PI}" />
         <limit effort="100" velocity="3" lower="${-PI}" upper="${PI}" />
         <dynamics damping="1.0" friction="0.8" />
     </joint>
