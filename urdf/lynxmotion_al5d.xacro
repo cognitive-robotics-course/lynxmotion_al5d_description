@@ -133,13 +133,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0015 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0045 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0015 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0045 -0.009 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="${finger_mass}" />
     </link>
@@ -150,13 +150,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0025 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0005 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0025 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0005 -0.009 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="${finger_mass}" />
     </link>
@@ -290,7 +290,7 @@
         <origin xyz="0.01 0  0" />
         <limit lower="0" upper="${gripper_base_width}" effort="10" velocity="0.1" />
         <axis xyz="-1 0 0" />
-        <dynamics damping="1.0" />
+        <dynamics damping="5.0" />
         <!-- <dynamics friction="0.42" /> -->
     </joint>
     
