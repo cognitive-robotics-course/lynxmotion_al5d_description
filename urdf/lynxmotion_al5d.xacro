@@ -48,13 +48,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="-0.01 0.03 0" rpy="0 0 ${PI}" />
+            <origin xyz="-0.01 0.01 0" rpy="0 0 ${PI}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="-0.01 0.03 0" rpy="0 0 ${PI}" />
+            <origin xyz="-0.01 0.01 0" rpy="0 0 ${PI}" />
         </collision>
         <xacro:inertial_matrix_bis mass="${top_box_mass}" />
     </link>
@@ -231,7 +231,7 @@
         <parent link="robot_base_top_box" />
         <child link="shoulder" />
         <axis xyz="1 0 0"/>
-        <origin xyz="0 0.020 0.071"  rpy="0 0 0" />
+        <origin xyz="0 0.010 0.071"  rpy="0 0 0" />
         <limit effort="100" velocity="3" lower="0" upper="${PI}" />
         <dynamics damping="1.0" friction="0.8" />
     </joint>
