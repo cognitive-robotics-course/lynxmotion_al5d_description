@@ -77,22 +77,22 @@
     </link>
     <gazebo reference="shoulder" />
 
-    <link name="arm">
+    <link name="elbow">
         <visual>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/elbow.dae" />
             </geometry>
             <origin rpy="${-PI-0.895} ${PI} 0" xyz="-0.005 ${tube_length - 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02} " />
         </visual>
         <collision>
             <geometry>
-                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/arm.dae" />
+                <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/elbow.dae" />
             </geometry>
             <origin rpy="${-PI-0.895} ${PI} 0" xyz="-0.005 ${tube_length - 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02} " />
         </collision>
-        <xacro:inertial_matrix_bis mass="${hs_755eb_mass + hs_645_mass}" />
+        <xacro:inertial_matrix_bis mass="0.01" />
     </link>
-    <gazebo reference="arm" />
+    <gazebo reference="elbow" />
 
     <link name="wrist">
         <visual>
@@ -238,7 +238,7 @@
 
     <joint name="Joint3" type="revolute">
         <parent link="shoulder" />
-        <child link="arm" />
+        <child link="elbow" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${shoulder_to_elbow} 0" />
         <limit effort="100" velocity="3" lower="${-PI}" upper="0" />
@@ -246,7 +246,7 @@
     </joint>
 
     <joint name="Joint4" type="revolute">
-        <parent link="arm" />
+        <parent link="elbow" />
         <child link="wrist" />
         <axis xyz="1 0 0" />
         <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0.005" rpy="0 0 0"/>
