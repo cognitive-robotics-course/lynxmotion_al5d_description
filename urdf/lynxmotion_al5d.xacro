@@ -141,7 +141,7 @@
             </geometry>
             <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0045 -0.009 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="${finger_mass}" />
+        <xacro:inertial_matrix_bis mass="0.002" />
     </link>
     <gazebo reference="left_finger" />
             
@@ -150,15 +150,15 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0005 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0045 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0005 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0045 -0.009 0" />
         </collision>
-        <xacro:inertial_matrix_bis mass="${finger_mass}" />
+        <xacro:inertial_matrix_bis mass="0.002" />
     </link>
     <gazebo reference="right_finger" />
 
@@ -269,7 +269,7 @@
         <origin xyz="-0.006 -0.015 0" />
         <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
-        <dynamics friction="0.084" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint> 
 
    <joint name="left_finger_joint" type="prismatic">
@@ -280,7 +280,7 @@
         <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <!-- Added an offset to fix issues in Rviz -->
         <mimic joint="right_finger_joint" offset="-0.0025" />
-        <dynamics friction="0.084" />
+        <dynamics damping="1.0" friction="0.16" />
     </joint>
 
     <!-- Joint that accept the distance between the two fingers as parameter -->
