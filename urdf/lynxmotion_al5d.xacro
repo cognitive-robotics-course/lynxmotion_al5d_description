@@ -133,13 +133,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0028 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0015 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_left.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0028 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0015 -0.009 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="${finger_mass}" />
     </link>
@@ -150,13 +150,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0028 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0025 -0.009 0" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/finger_right.dae" />
             </geometry>
-            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="-0.0028 -0.009 0" />
+            <origin rpy="${PI/2} 0 ${-PI/2}" xyz="0.0025 -0.009 0" />
         </collision>
         <xacro:inertial_matrix_bis mass="${finger_mass}" />
     </link>
@@ -266,7 +266,7 @@
     <joint name="right_finger_joint" type="prismatic">
         <parent link="gripper" />
         <child link="right_finger" />
-        <origin xyz="0 -0.015 0" />
+        <origin xyz="-0.006 -0.015 0" />
         <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
         <dynamics damping="1.0" friction="0.084" />
@@ -275,7 +275,7 @@
    <joint name="left_finger_joint" type="prismatic">
         <parent link="gripper" />
         <child link="left_finger" />
-        <origin xyz="-0.0025 -0.015 0" />
+        <origin xyz="-0.0017 -0.015 0" />
         <axis xyz="-1 0 0" />
         <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <!-- Added an offset to fix issues in Rviz -->
