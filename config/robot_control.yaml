@@ -9,7 +9,7 @@
         Gripper: {p: 100.0, i: 0.01, d: 10.0, antiwindup: true}
         # the following gains are used by the gazebo_mimic_joint plugin
         right_finger_joint: {p: 100.0, i: 0.01, d: 10.0}
-        left_finger_joint: {p: 100.0, i: 0.01, d: 10.0}
+        left_finger_joint: {p: 100.0, i: 0.0, d: 0.0}
 
 lynxmotion_al5d:
     # Publish all joint states -----------------------------------

@@ -269,7 +269,7 @@
         <origin xyz="-0.006 -0.015 0" />
         <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
-        <dynamics damping="1.0" friction="0.084" />
+        <dynamics friction="0.084" />
     </joint> 
 
    <joint name="left_finger_joint" type="prismatic">
@@ -280,7 +280,7 @@
         <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <!-- Added an offset to fix issues in Rviz -->
         <mimic joint="right_finger_joint" offset="-0.0025" />
-        <dynamics damping="1.0" friction="0.084" />
+        <dynamics friction="0.084" />
     </joint>
 
     <!-- Joint that accept the distance between the two fingers as parameter -->
