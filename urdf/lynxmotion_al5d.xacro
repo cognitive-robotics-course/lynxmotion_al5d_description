@@ -90,7 +90,7 @@
             </geometry>
             <origin rpy="${-PI-0.895} ${PI} 0" xyz="-0.005 ${tube_length - 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.02} " />
         </collision>
-        <xacro:inertial_matrix_bis mass="0.01" />
+        <xacro:inertial_matrix_bis mass="${hs_755eb_mass + hs_645_mass}" />
     </link>
     <gazebo reference="elbow" />
 
@@ -251,7 +251,7 @@
         <axis xyz="1 0 0" />
         <origin xyz="0 ${tube_length + hs_645_depth - 0.003} 0.005" rpy="0 0 0"/>
         <limit effort="40" velocity="3" lower="${-PI/2}" upper="${PI/2}" />
-        <dynamics damping="1.0" friction="0.8" />
+        <dynamics damping="5.0" friction="0.08" />
     </joint>
 
    <joint name="Joint5" type="revolute">
@@ -267,9 +267,9 @@
         <parent link="gripper" />
         <child link="right_finger" />
         <origin xyz="0 -0.015 0" />
-        <limit effort="10" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
+        <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <mimic joint="Gripper" multiplier="-0.5" offset="${gripper_base_width/2}" />
-        <dynamics damping="1.0" friction="0.16" />
+        <dynamics damping="1.0" friction="0.084" />
     </joint> 
 
    <joint name="left_finger_joint" type="prismatic">
@@ -277,10 +277,10 @@
         <child link="left_finger" />
         <origin xyz="-0.0025 -0.015 0" />
         <axis xyz="-1 0 0" />
-        <limit effort="10" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
+        <limit effort="100" velocity="0.1" lower="0" upper="${gripper_base_width/2}" />
         <!-- Added an offset to fix issues in Rviz -->
         <mimic joint="right_finger_joint" offset="-0.0025" />
-        <dynamics damping="1.0" friction="0.16" />
+        <dynamics damping="1.0" friction="0.084" />
     </joint>
 
     <!-- Joint that accept the distance between the two fingers as parameter -->
