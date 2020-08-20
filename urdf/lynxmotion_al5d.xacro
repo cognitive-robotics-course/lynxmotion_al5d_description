@@ -47,13 +47,13 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="-0.01 0.02 0" rpy="0 0 ${PI}" />
+            <origin xyz="-0.01 0.03 0" rpy="0 0 ${PI}" />
         </visual>
         <collision>
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/top_box.dae" />
             </geometry>
-            <origin xyz="-0.01 0.02 0" rpy="0 0 ${PI}" />
+            <origin xyz="-0.01 0.03 0" rpy="0 0 ${PI}" />
         </collision>
         <xacro:inertial_matrix_bis mass="${top_box_mass}" />
     </link>
@@ -81,7 +81,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/elbow.dae" />
             </geometry>
-            <origin rpy="${-PI-0.895} ${PI} 0" xyz="-0.005 ${tube_length - 2*hs_755eb_depth/5 + 0.005} ${-shoulder_to_elbow - 0.02}" />
+            <origin rpy="${-PI-0.895} ${PI} 0" xyz="-0.006 ${tube_length - 2*hs_755eb_depth/5} ${-shoulder_to_elbow - 0.018}" />
         </visual>
         <collision>
             <geometry>
@@ -98,7 +98,7 @@
             <geometry>
                 <mesh filename="package://lynxmotion_al5d_description/meshes/robot_parts/wrist.dae" />
             </geometry>
-            <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.067" />
+            <origin rpy="${PI} 0 0" xyz="0.005 -0.165 0.0695" />
         </visual>
         <collision>
             <geometry>
@@ -248,7 +248,7 @@
         <parent link="elbow" />
         <child link="wrist" />
         <axis xyz="1 0 0" />
-        <origin xyz="0 0.187 0.005" rpy="0 0 0"/>
+        <origin xyz="0 0.181 0.005" rpy="0 0 0"/>
         <limit effort="40" velocity="3" lower="${-PI/2}" upper="${PI/2}" />
         <dynamics damping="5.0" friction="0.08" />
     </joint>
