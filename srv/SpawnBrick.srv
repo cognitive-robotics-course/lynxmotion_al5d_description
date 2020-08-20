@@ -1,0 +1,5 @@
+string color    # Color of the block (red, blue or green)
+string name     # Optional name for the brick
+lynxmotion_al5d_description/Pose pose # Pose of the object to be spawned
+---
+string name     # Returns the name of the brick in the workspace

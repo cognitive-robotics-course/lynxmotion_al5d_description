@@ -10,8 +10,6 @@
     <arg name="server_required" default="true" />
     <arg name="gui_required" default="true" />
     
-
-    
     <!-- We resume the logic in empty_world.launch -->   
     <include file="$(find gazebo_ros)/launch/empty_world.launch">     
         <arg name="paused" value="$(arg paused)" /> 
@@ -20,9 +18,8 @@
         <arg name="gui_required" default="$(arg server_required)" />
     </include>    
 
-    <!-- Load the URDF into the ROS Parameter Server -->   
-    <param name="robot_description" command="$(find xacro)/xacro --inorder  
-        '$(find lynxmotion_al5d_description)/urdf/lynxmotion_al5d.xacro'" />      
+    <!-- Continues the logic in upload.launch-->  
+    <include file="$(find lynxmotion_al5d_description)/launch/upload.launch" />
 
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->   
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" 
@@ -32,11 +29,12 @@
                     -J lynxmotion_al5d::Joint5 0 -J lynxmotion_al5d::Gripper 0.03175  
                     -unpause"/>  
 
+    <node name="sim_manager" pkg="lynxmotion_al5d_description" type="manager_node" />
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <rosparam file="$(find lynxmotion_al5d_description)/config/robot_control.yaml" />
 
     <!-- Load the controllers -->
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/lynxmotion_al5d" args="joints_positions" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/lynxmotion_al5d" args="joints_positions joint_state_controller" />
 
     <!-- Convert joint states to TF transforms for Rviz, etc -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">

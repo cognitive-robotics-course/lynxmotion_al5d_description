@@ -1,0 +1,339 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='Green_Lego_Block'>
+    <link name='link_0'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <mass>0.005</mass>
+        <inertia>
+          <ixx>7.604166666666669e-07</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>7.604166666666669e-07</iyy>
+          <iyz>0</iyz>
+          <izz>7.604166666666669e-07</izz>
+        </inertia>
+        <pose frame=''>0 0 0.0048 0 -0 0</pose>
+      </inertial>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <visual name='visual'>
+        <pose frame=''>0 0 0.00645 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0008 0.0158 0.0063</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='visual_4'>
+        <pose frame=''>-0.0159 0 0.0048 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0002 0.0158 0.0096</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='visual_5'>
+        <pose frame=''>0.0159 0 0.0048 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0002 0.0158 0.0096</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_1'>
+        <pose frame=''>0 0 0.0048 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.003255</radius>
+            <length>0.0063</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_2'>
+        <pose frame=''>0.008 0 0.0048 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.00325</radius>
+            <length>0.0096</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_14'>
+        <pose frame=''>0.0041 -0.0039 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_3'>
+        <pose frame=''>-0.008 0 0.0048 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.00325</radius>
+            <length>0.0096</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_6'>
+        <pose frame=''>0 0.0079 0.0048 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0318 0.0002 0.0096</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_6_bis'>
+        <pose frame=''>0 -0.0079 0.0048 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0318 0.0002 0.0096</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_7'>
+        <pose frame=''>0 0 0.0091 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0318 0.0158 0.0017</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_8'>
+        <pose frame=''>0.0121 0.0041 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_9'>
+        <pose frame=''>-0.0121 0.0041 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_11'>
+        <pose frame=''>0.0041 0.0041 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_10'>
+        <pose frame=''>-0.0041 0.0041 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_12'>
+        <pose frame=''>0.0121 -0.0039 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_13'>
+        <pose frame=''>-0.0121 -0.0039 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <visual name='ModelPreview_0::link_0::visual_15'>
+        <pose frame=''>-0.0041 -0.0039 0.0105 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.0024</radius>
+            <length>0.0018</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+        <transparency>0</transparency>
+        <cast_shadows>1</cast_shadows>
+      </visual>
+      <collision name='collision'>
+        <pose frame=''>0 0 0.0048 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.0318 0.0158 0.0096</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <!-- Red Pine coefficients for longitudinal axis of the wood
+                 according to:
+                 http://www.fpl.fs.fed.us/documnts/fplgtr/fplgtr113/ch04.pdf -->
+            <poissons_ratio>0.347</poissons_ratio>
+            <elastic_modulus>8.8e+09</elastic_modulus>
+            <ode>
+              <kp>100000</kp>
+              <kd>100</kd>
+              <max_vel>100.0</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact>
+          <friction>
+            <torsional>
+              <coefficient>1.0</coefficient>
+              <use_patch_radius>0</use_patch_radius>
+              <surface_radius>0.01</surface_radius>
+            </torsional>
+          </friction>
+        </surface>
+      </collision>
+    </link>
+  </model>
+</sdf>
