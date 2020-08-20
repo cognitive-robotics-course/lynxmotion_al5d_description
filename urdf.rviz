@@ -9,7 +9,6 @@ Panels:
         - /RobotModel1
         - /RobotModel1/Links1
         - /RobotModel1/Links1/left_finger1
-        - /RobotModel1/Links1/wrist1
         - /TF1
         - /TF1/Tree1
       Splitter Ratio: 0.585014403
@@ -61,68 +60,68 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        All Links Enabled: false
+        All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        arm:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
-        elbow:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: false
+          Value: true
         gripper:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         gripper_mov:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         left_finger:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         right_finger:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         robot_base_cylinder:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         robot_base_top_box:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         robot_support:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         shoulder:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         world:
           Alpha: 1
           Show Axes: false
           Show Trail: false
         wrist:
           Alpha: 1
-          Show Axes: true
+          Show Axes: false
           Show Trail: false
           Value: true
       Name: RobotModel
@@ -136,9 +135,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        camera_link:
+        arm:
           Value: true
-        elbow:
+        camera_link:
           Value: true
         gripper:
           Value: true
@@ -173,7 +172,7 @@ Visualization Manager:
             robot_base_cylinder:
               robot_base_top_box:
                 shoulder:
-                  elbow:
+                  arm:
                     wrist:
                       gripper:
                         gripper_mov:
@@ -224,10 +223,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.264796674
+      Pitch: 0.229796737
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.560382307
+      Yaw: 0.0453828946
     Saved: ~
 Window Geometry:
   Displays:
