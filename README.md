@@ -5,7 +5,7 @@ In addition, the package provides a set of [lego bricks](https://www.lego.com/en
 
 See below the two (at the left side, the physical robotic arm, at the right side, the simulated robot)
 
-![Comparison between the physical robot and the simulated one](screenshots/Comparison.png?raw=true "Robotic arm vs simulated robot")
+<img src="screenshots/robotic-arm.png" width="49%" hspace="5px"/> <img src="screenshots/simulated-robot.png" width="49%" style="float: right;"/>
 
 ## Table of contents
 1. [Installation](#installation)
