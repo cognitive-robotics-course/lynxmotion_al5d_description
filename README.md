@@ -48,7 +48,7 @@ In order for this package to work properly, it is important to install the depen
 
 `git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git`
 
-`git clone https://github.com/CRAM-Team/lynxmotion_al5d_description.git`
+`git clone https://github.com/cognitive-robotics-course/lynxmotion_al5d_description.git`
 
 `cd ..`
 
