@@ -34,25 +34,22 @@ The instructions below assume that the user has a fully functional ROS Kinetic i
 
 In order for this package to work properly, it is important to install the dependencies. They can be installed by copying and pasting the following commands:
 
-``sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'``
-
-`wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -`
-
-`sudo apt-get update`
-
-`sudo apt-get install ros-kinetic-joint-state-publisher ros-kinetic-joint-state-publisher-gui ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs libignition-math2-dev ros-kinetic-effort-controllers ros-kinetic-joint-state-controller ros-kinetic-position-controllers`
-
-`sudo apt-get install gazebo7`
-
-`roscd; cd ../src`
-
-`git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git`
-
-`git clone https://github.com/cognitive-robotics-course/lynxmotion_al5d_description.git`
-
-`cd ..`
-
-`catkin_make`
+`sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'`
+```
+wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install ros-kinetic-joint-state-publisher ros-kinetic-joint-state-publisher-gui \
+ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros-kinetic-gazebo-msgs \
+ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs libignition-math2-dev ros-kinetic-effort-controllers \
+ros-kinetic-joint-state-controller ros-kinetic-position-controllers ros-kinetic-genpy
+sudo apt-get install gazebo7
+roscd
+cd ../src
+git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+git clone https://github.com/cognitive-robotics-course/lynxmotion_al5d_description.git
+cd ..
+catkin_make
+```
 
 
 ### Overview of the simulated robot
