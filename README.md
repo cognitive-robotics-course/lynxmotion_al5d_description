@@ -43,8 +43,8 @@ ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros ros-kinetic-gazebo-dev ros
 ros-kinetic-gazebo-plugins ros-kinetic-gazebo-ros-pkgs libignition-math2-dev ros-kinetic-effort-controllers \
 ros-kinetic-joint-state-controller ros-kinetic-position-controllers ros-kinetic-genpy
 sudo apt-get install gazebo7
-roscd
-cd ../src
+mkdir -p ~/workspace/ros/src
+cd ~/workspace/ros/src
 git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
 git clone https://github.com/cognitive-robotics-course/lynxmotion_al5d_description.git
 cd ..
